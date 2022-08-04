@@ -29,31 +29,31 @@
 // 文档头部，添加CSS/js/网页关键词等地方
 <head>
   
-  // 网页字符编码
-	<meta charset="UTF-8">
-	// 适配IE浏览器
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  // 配备移动端代码
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  // 引入网页logo
-  <link rel="shortcut icon" href="favicon.ico(ico地址)" type="image/x-icon">
-  // 引入CSS
-  <link rel="stylesheet" href="css地址">
-  
-  // 网页SEO：提升网页在搜索时的优先级
-  // 网页标题
-  <title>标题内容</title>
-  // 网页描述
-  <meta name="description" content="描述内容">
-  //网页关键词
-	<meta name="keywords" content="关键词内容">
+    // 网页字符编码
+    <meta charset="UTF-8">
+    // 适配IE浏览器
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    // 配备移动端代码
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    // 引入网页logo
+    <link rel="shortcut icon" href="favicon.ico(ico地址)" type="image/x-icon">
+    // 引入CSS
+    <link rel="stylesheet" href="css地址">
+    
+    // 网页SEO：提升网页在搜索时的优先级
+    // 网页标题
+    <title>标题内容</title>
+    // 网页描述
+    <meta name="description" content="描述内容">
+    //网页关键词
+    <meta name="keywords" content="关键词内容">
   
 </head>
 
 // 网页内容
 <body>
 	网页内容区域
-  // 引入js，写在body内容的末尾位置
+    // 引入js，写在body内容的末尾位置
 	<script src="js地址"></script>
 </body>
 
@@ -168,8 +168,8 @@
 		文件：<input type="file" multiple"选择多个文件">
     
 		下拉：<select name="" id="">
-						<option value="" selected默认选中>下拉显示的内容，有几个写几个</option>
-				 </select>
+                <option value="" selected默认选中>下拉显示的内容，有几个写几个</option>
+            </select>
     
 		邮箱: <input type="email">
     
