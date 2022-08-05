@@ -2,6 +2,29 @@
 
 ## Git
 
+### 1. Git基础配置
+1. 设置用户名、邮箱
+```C++
+git config --global user.name "输入设置的用户名"
+git config --global user.email "输入设置的邮箱"
+git config --global --list
+```
+2. 初始化仓库
+```C++
+git init
+```
+3. 连接github
+```C++
+git remote add origin 远程仓库地址
+```
+
+### 2. 远程仓库覆盖本地文件
+```C++
+git fetch --all
+git reset --hard origin/master
+git pull
+```
+
 
 ## HTML
 
