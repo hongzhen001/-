@@ -122,34 +122,34 @@
 ### 5. 列表/表格
 
 ```html
-无序列表：
-	<ul>
-		<li>可嵌套任意标签</li>  
-	</ul>
+// 无序列表：
+<ul>
+	<li>可嵌套任意标签</li>  
+</ul>
 
-有序列表：
-	<ol>
-		<li>可嵌套任意标签</li>
-	</ol>
+// 有序列表：
+<ol>
+	<li>可嵌套任意标签</li>
+</ol>
 
-自定义列表：
-	<dl>
-  		<dt>列表主题，可嵌套任意标签</dt>
-    		<dd>主题介绍，可嵌套任意标签</dd>
-	</dl>
+// 自定义列表：
+<dl>
+  	<dt>列表主题，可嵌套任意标签</dt>
+   <dd>主题介绍，可嵌套任意标签</dd>
+</dl>
 
 // 清除列表自带形式： list-style：none（CSS）
 
-表格：
-	<table border="边框大小属性：数字+px">
-    	<caption>表格标题，默认加粗</caption>
-    	<tr> 表格的行
-    		<th>表格第一行中的单元格，默认加粗居中</th>
-    	</tr>
-    	<tr>
-    		<td>表格每行中的单元格</td>
-   		</tr>
-	</table>
+// 表格：
+<table border="边框大小属性：数字+px">
+   <caption>表格标题，默认加粗</caption>
+   <tr> 表格的行
+    	<th>表格第一行中的单元格，默认加粗居中</th>
+   </tr>
+   <tr>
+    	<td>表格每行中的单元格</td>
+   	</tr>
+</table>
 
 // 表格结构：thead头部；tbody主体；tfoot尾部；结构书写于<table>内
 // 单元格合并：colspan：水平单元格合并；rowspan：垂直单元格合并；如有书写表格结构，不能跨结构合并单元格
@@ -159,55 +159,55 @@
 
 ```html
 // 表单验证时，须添加form表单域，才可上传
-	<form action="表单上传地址">
+<form action="表单上传地址">
     	
-		文本框：<input type="text" placeholder=“预显示文字内容”>
+	文本框：<input type="text" placeholder=“预显示文字内容”>
     
-		密码框：<input type="password" placeholder=“预显示文字内容”>
+	密码框：<input type="password" placeholder=“预显示文字内容”>
     
-		单选：<input type="radio" name=“单选需添加相同名才可生效” checked"默认选中">
+	单选：<input type="radio" name=“单选需添加相同名才可生效” checked"默认选中">
     
-		多选：<input type="checkbox" checked"默认选中">
+	多选：<input type="checkbox" checked"默认选中">
     
-		文件：<input type="file" multiple"选择多个文件">
+	文件：<input type="file" multiple"选择多个文件">
     
-		下拉：<select name="" id="">
-				<option value="" selected默认选中>下拉显示的内容，有几个写几个</option>
-			</select>
+	下拉：<select name="" id="">
+      <option value="" selected默认选中>下拉显示的内容，有几个写几个</option>
+      </select>
     
-		邮箱: <input type="email">
+	邮箱: <input type="email">
     
-		网址: <input type="url" >
+	网址: <input type="url" >
     
-		日期: <input type="date" >
+	日期: <input type="date" >
     
-		时间: <input type="time">
+	时间: <input type="time">
     
-		数量: <input type="number">
+	数量: <input type="number">
     
-		手机号码: <input type="tel">
+	手机号码: <input type="tel">
     
-		搜索: <input type="search">
+	搜索: <input type="search">
     
-		颜色: <input type="color">
+	颜色: <input type="color">
     
-		提交按钮：<input type="submit" value="按钮显示内容">
+	提交按钮：<input type="submit" value="按钮显示内容">
     
-		重置按钮：<input type="rest" value="按钮显示内容">
+	重置按钮：<input type="rest" value="按钮显示内容">
     
-		无意义按钮：<input type="button" value="按钮显示内容">
+	无意义按钮：<input type="button" value="按钮显示内容">
     
-	</form>
+</form>
 
 
 按钮另一种形式：
-	<button type="button">按钮显示内容</button>  // 默认提交效果
-	<button type="submit/rest">按钮显示内容</button>
+<button type="button">按钮显示内容</button>  // 默认提交效果
+<button type="submit/rest">按钮显示内容</button>
 
 单选/多选时点文字也可选择：
-	<label for="">  // for属性需删除
-		<input type="radio">
-	</label>
+<label for="">  // for属性需删除
+	<input type="radio">
+</label>
 ```
 
 ### 7. 字符
@@ -226,9 +226,9 @@
 
 > 元素嵌套规则：
 >
->	a. 块级元素可做容器嵌套任意标签（p除外，p不能嵌套块级元素）
+>  a. 块级元素可做容器嵌套任意标签（p除外，p不能嵌套块级元素）
 >
->	b. a可嵌套任意标签（除自身，a不能嵌套a）
+>  b. a可嵌套任意标签（除自身，a不能嵌套a）
 
 - 块级元素
 
@@ -275,9 +275,9 @@
 >
 >	（行内个数，id个数，类个数，标签个数）；个数相同比较下一个，哪一个多优先生效哪一个选择器
 >
->		i. 行内1，id1，类0，标签1 与 行内0，id1，类0，标签1 ；优先生效前面的
+>	i. 行内1，id1，类0，标签1 与 行内0，id1，类0，标签1 ；优先生效前面的
 >
->		ii. 行内0，id1，类0，标签1 与 行内0，id1，类1，标签1 ；优先生效后面的
+>	ii. 行内0，id1，类0，标签1 与 行内0，id1，类1，标签1 ；优先生效后面的
 
 1. 标签选择器（选择整类标签）
 
@@ -307,6 +307,7 @@
 
    ```css
    * {CSS属性+取值}
+   ```
 
 5. 后代选择器（选择父级内所有的相关标签，中间用空格隔开，不限于用标签或类名）
 
@@ -415,9 +416,9 @@
 - 边框圆角
 
   ```css
-  border-radius:"数字+px/百分比（圆角半径）"
-  	// 最多可取四个值，按顺时间：左上-右上-右下-左下
-  	// 如有一角无取值，则看对角设置的值
+   border-radius:"数字+px/百分比（圆角半径）"
+   // 最多可取四个值，按顺时间：左上-右上-右下-左下
+   // 如有一角无取值，则看对角设置的值
   ```
 
 3. 内边距（与边框一致，可通过方位词设置单个方位）
@@ -433,7 +434,7 @@
 
    ```css
    margin:"数字+px"
-   	// 最多可取四个值，按顺时间：上右下左
+      // 最多可取四个值，按顺时间：上右下左
    	// 取三个值，按上，左右，下设置
    	// 取两个值，按上下，左右；左右可去auto（居中）
    ```
@@ -442,12 +443,12 @@
 
    ```css
    box-shadow:"数字+px 数字+px 数字+px 数字+px 颜色 阴影位置"
-   	// 第一个值为：水平偏移量（必写）
-     // 第二个值为：垂直偏移量（必写）
-     // 第三个值为：模糊度（可不写）
-     // 第四个值为：阴影扩大（可不写）
-     // 第五个值为：颜色（可不写）
-     // 第六个值为：阴影位置（可不写，默认外阴影，inset为内阴影）
+      // 第一个值为：水平偏移量（必写）
+      // 第二个值为：垂直偏移量（必写）
+      // 第三个值为：模糊度（可不写）
+      // 第四个值为：阴影扩大（可不写）
+      // 第五个值为：颜色（可不写）
+      // 第六个值为：阴影位置（可不写，默认外阴影，inset为内阴影）
    ```
 
 6. BUG
@@ -458,8 +459,8 @@
    b. 清除浏览器自带内外边距：
    	*{margin:0,padding:0}
    c. 父子级中，子级设置margin-top会作用于父级，子级无法生效:
-     i. 给父级添加 overflow-hidden；
-   	ii. 设置浮动
+      i. 给父级添加 overflow-hidden；
+      ii. 设置浮动
    ```
 
 
@@ -499,8 +500,8 @@
 
    ```css
    font-color:""
-   	// 颜色名（red）；rgb；rgba（a为透明度，范围0-1之间）；16进制表示法
-     // rgb的表述形式为：rgb(0,0,0)【0,0,0为纯白，255,255,255为纯黑】
+      // 颜色名（red）；rgb；rgba（a为透明度，范围0-1之间）；16进制表示法
+      // rgb的表述形式为：rgb(0,0,0)【0,0,0为纯白，255,255,255为纯黑】
    ```
 
 6. 行高
@@ -567,14 +568,16 @@
 
    ```css
    background-size:"宽 高" // 两个取值用空格隔开
-   		取值：数字+px；百分比；contain等比例缩放（包含，宽高其中一个充满盒子则停止缩放）；cover等比例缩放（覆盖，不留空白）
+   	取值：数字+px；百分比；contain等比例缩放（包含，宽高其中一个充满盒子则停止缩放）；cover等比例缩放（覆盖，不留空白）
        // 背景图的包装标签常设置与图片同等宽高，基本使用contain/cover即可
    ```
 
 6. 精灵图
 
    >a. 设置一个盒子与图片大小相同（宽高）
+   >
    >b. 将精灵图设置为背景图
+   >
    >c. 使用background-position调整图片位置（用数字+px取值)
 
 7. 渐变背景
@@ -629,7 +632,7 @@ p::befor {content"",CSS属性+取值}  //在p标签最前添加一个伪元素
 >
 > d. 同层级关系：后面的内容会压住前面的内容（定位情况下）
 >
->	//可用z-index:数字 提升显示优先级，数字越大越优先（需配合定位才能生效）
+> e. 可用z-index:数字 提升显示优先级，数字越大越优先（需配合定位才能生效）
 
 1. 相对定位
 
@@ -664,10 +667,10 @@ p::befor {content"",CSS属性+取值}  //在p标签最前添加一个伪元素
    
    div {position:relativ}  //子绝父相
    .center {
-   	position:absolute;
-    left:50%;
-   	top:50%;
-    transform:translate(-50%,-50%);}
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);}
    ```
 
 ### 9. 溢出效果
@@ -692,7 +695,7 @@ overflow:auto自动显示滚动条
    ```css
    display:none（不占用标准流）
    	// 配合hover实现光标悬停显示；hover中设置display：black
-   visibility：hidden（占用标准流，不常用）
+   visibility:hidden（占用标准流，不常用）
    ```
 
 ### 11. 过渡效果
@@ -718,9 +721,9 @@ cursor:move（十字，可移动图片）
 > 作用于头像与文字不在同一水平的情况
 
 ```css
-vertical-align:top顶部对齐
-vertical-align:middle中对齐
-vertical-align:bottom底部对齐
+vertical-align:top // 顶部对齐
+vertical-align:middle // 中对齐
+vertical-align:bottom // 底部对齐
 ```
 
 ## CSS3
@@ -835,8 +838,8 @@ vertical-align:bottom底部对齐
    transform-style: preserve-3d;  // 给父级添加
    
    呈现立体图形步骤:
-   	a.给父级添加：transform-style: preserve-3d;
-   	b.将内容定位到相对位置
+   	a. 给父级添加：transform-style: preserve-3d;
+   	b. 将内容定位到相对位置
    	c. 给前面的内容添加： transform: translateZ();让前面内容显示在页面
    	d. 添加：hover-transform: rotateX/Y()，光标悬停旋转
    ```
@@ -858,10 +861,10 @@ vertical-align:bottom底部对齐
    }   // 两个动画的效果
    
    @keyframes 动画名称（自定义）{
-   	0% {}
-    10% {}
-    15% {}
-    100% {}
+      0% {}
+      10% {}
+      15% {}
+      100% {}
    }   // 多个动画的效果; 百分比数值可以自定义（动画总时长的占比）
    ```
 
@@ -1117,8 +1120,11 @@ vertical-align:bottom底部对齐
 3. BootStrap样式使用
 
    >a. [bootstrap CSS样式](https://v3.bootcss.com/css/)
+   >
    >b. [bootstrap 组件样式](https://v3.bootcss.com/components/)
+   >
    >c. [bootstrap js插件](https://v3.bootcss.com/javascript/)
+   >
    >d. [bootstrap 个人定制](https://v3.bootcss.com/customize/)
 
    ```css
@@ -1273,9 +1279,9 @@ console.log('检查元素中显示的内容')
 设置一个场景：apple1为青苹果，apple2为红苹果，将红苹果给apple1，青苹果给apple2
 
 a. 设置一个临时变量
-	var temp；  // 声明一个临时变量赋值为空
-  var apple1 = '青苹果'；
-  var apple2 = '红苹果'；
+   var temp；  // 声明一个临时变量赋值为空
+   var apple1 = '青苹果'；
+   var apple2 = '红苹果'；
 b. 将青苹果放入临时变量
 	temp = apple1；
 c. 将红苹果给apple1
@@ -1306,11 +1312,11 @@ d. 把临时变量中的青苹果给apple2
 
       > a. 八进制（范围0～7）
       >
-      > 	var num = 010 // 输出为8
+      > var num = 010 // 输出为8
       >
       > b. 十六进制（范围0～9；A～F）
       >
-      >		var num =0xA // 输出为10
+      >var num =0xA // 输出为10
       >
       > c. JS中八进制前面加0，十六进制前面加0x；
 
@@ -1319,6 +1325,7 @@ d. 把临时变量中的青苹果给apple2
          ```javascript
          Number.MAX_VALUE;  // 最大值
          Number.MIN_VALUE;  // 最小值
+         ```
 
       2. 三个特殊值
 
@@ -1443,38 +1450,38 @@ d. 把临时变量中的青苹果给apple2
 
       ```javascript
       a. .toString()
-      	var num = 1；
-        console.log(num.toString());  // 输出为1字符串型；toString括号内可为空
+         var num = 1；
+         console.log(num.toString());  // 输出为1字符串型；toString括号内可为空
         
       b. String()  // 强制转换
-      	var num = 1；
-        console.log(String(num));  // 输出为1字符串型
+         var num = 1；
+         console.log(String(num));  // 输出为1字符串型
         
       c. 加号拼接字符串（隐式转换）【常用】
-      	var num = 1；
-        console.log(num + '');  // 输出为1字符串型
+         var num = 1；
+         console.log(num + '');  // 输出为1字符串型
       ```
 
    2. 转换为数字型
 
       ```javascript
       a. parseIut(string)  // 可以把字符串转换为数字型（只能为整数）
-        console.log(parseInt('19'));  // 输出为19
-      	console.log(parseInt('3.94'));  // 输出为3，小数会自动舍去小数点后的内容取前面的整数
-      	console.log(parseInt('120px'));  // 输出为120，120px会自动去掉px单位
-      	console.log(parseInt('rem120px'));  // 输出为NaN，因为前面为rem，120px会自动去掉
+         console.log(parseInt('19'));  // 输出为19
+         console.log(parseInt('3.94'));  // 输出为3，小数会自动舍去小数点后的内容取前面的整数
+         console.log(parseInt('120px'));  // 输出为120，120px会自动去掉px单位
+         console.log(parseInt('rem120px'));  // 输出为NaN，因为前面为rem，120px会自动去掉
       
       b. parseFloat(string)  // 可以吧字符串转变成数字型（可以为小数）
-        console.log(parseFloat('3.14'));  // 输出为3.14
-      	console.log(parseInt('120px'));  // 输出为120，120px会自动去掉px单位
-      	console.log(parseInt('rem120px'));  // 输出为NaN，因为前面为rem，120px会自动去掉
+         console.log(parseFloat('3.14'));  // 输出为3.14
+         console.log(parseInt('120px'));  // 输出为120，120px会自动去掉px单位
+         console.log(parseInt('rem120px'));  // 输出为NaN，因为前面为rem，120px会自动去掉
       
       c. Number()
-      	console.log(Number('3.14'));  // 输出为3.14
+         console.log(Number('3.14'));  // 输出为3.14
       
       d. js隐式转换（- * /）【算数运算】
-      	console.log(parseFloat('3.14' - 0));  // 输出为3.14
-      	console.log(parseFloat('123' - '120'));  // 输出为3
+         console.log(parseFloat('3.14' - 0));  // 输出为3.14
+         console.log(parseFloat('123' - '120'));  // 输出为3
       ```
 
    3. 转换为布尔型
