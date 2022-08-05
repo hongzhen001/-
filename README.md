@@ -31,9 +31,9 @@
 <head>
   
   // 网页字符编码
-	<meta charset="UTF-8">
-	// 适配IE浏览器
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+  // 适配IE浏览器
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   // 配备移动端代码
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   // 引入网页logo
@@ -46,15 +46,15 @@
   <title>标题内容</title>
   // 网页描述
   <meta name="description" content="描述内容">
-  //网页关键词
-	<meta name="keywords" content="关键词内容">
+  // 网页关键词
+  <meta name="keywords" content="关键词内容">
   
 </head>
 
 // 网页内容
 <body>
 	网页内容区域
-  // 引入js，写在body内容的末尾位置
+	// body引入js，需写在末尾位置
 	<script src="js地址"></script>
 </body>
 
@@ -85,7 +85,7 @@
 
 下划线： <ins></ins>  //具有强调意义    <u></u>
 
-倾斜： <em></em>  //具有强调意义    <i></i>``
+倾斜： <em></em>  //具有强调意义    <i></i>
 
 删除线： <del></del>  //具有强调意义   <s></s>
 
@@ -121,7 +121,7 @@
 ```html
 无序列表：
 	<ul>
-  	<li>可嵌套任意标签</li>  
+  		<li>可嵌套任意标签</li>  
 	</ul>
 
 有序列表：
@@ -131,21 +131,21 @@
 
 自定义列表：
 	<dl>
-  	<dt>列表主题，可嵌套任意标签</dt>
-    <dd>主题介绍，可嵌套任意标签</dd>
+  		<dt>列表主题，可嵌套任意标签</dt>
+    	<dd>主题介绍，可嵌套任意标签</dd>
 	</dl>
 
 // 清除列表自带形式： list-style：none（CSS）
 
 表格：
 	<table border="边框大小属性：数字+px">
-    <caption>表格标题，默认加粗</caption>
-    <tr> 表格的行
-    	<th>表格第一行中的单元格，默认加粗居中</th>
-    </tr>
-    <tr>
-    	<td>表格每行中的单元格</td>
-    </tr>
+    	<caption>表格标题，默认加粗</caption>
+    	<tr> 表格的行
+    		<th>表格第一行中的单元格，默认加粗居中</th>
+    	</tr>
+    	<tr>
+    		<td>表格每行中的单元格</td>
+   		</tr>
 	</table>
 
 // 表格结构：thead头部；tbody主体；tfoot尾部；结构书写于<table>内
@@ -157,7 +157,7 @@
 ```html
 // 表单验证时，须添加form表单域，才可上传
 	<form action="表单上传地址">
-    
+    	
 		文本框：<input type="text" placeholder=“预显示文字内容”>
     
 		密码框：<input type="password" placeholder=“预显示文字内容”>
@@ -169,8 +169,8 @@
 		文件：<input type="file" multiple"选择多个文件">
     
 		下拉：<select name="" id="">
-						<option value="" selected默认选中>下拉显示的内容，有几个写几个</option>
-				 </select>
+				<option value="" selected默认选中>下拉显示的内容，有几个写几个</option>
+			</select>
     
 		邮箱: <input type="email">
     
@@ -223,9 +223,9 @@
 
 > 元素嵌套规则：
 >
-> ​	a. 块级元素可做容器嵌套任意标签（p除外，p不能嵌套块级元素）
+>	a. 块级元素可做容器嵌套任意标签（p除外，p不能嵌套块级元素）
 >
-> ​	b. a可嵌套任意标签（除自身，a不能嵌套a）
+>	b. a可嵌套任意标签（除自身，a不能嵌套a）
 
 - 块级元素
 
@@ -254,27 +254,27 @@
 
 > a. 继承性
 >
-> ​	子级继承父级元素的文字样式，如自身存在相应样式则不会继承（继承优先级最低）
+>	子级继承父级元素的文字样式，如自身存在相应样式则不会继承（继承优先级最低）
 >
-> ​	特例：a不能继承color属性，h1不能继承font-size属性
+>	特例：a不能继承color属性，h1不能继承font-size属性
 >
 > b. 层叠行
 >
-> ​	父子级中不同样式可叠加，相同样式优先级高的会覆盖优先级低的样式（优先级按CSS选择器进行计算）
+>	父子级中不同样式可叠加，相同样式优先级高的会覆盖优先级低的样式（优先级按CSS选择器进行计算）
 
 ### 2. CSS选择器
 
 > a. 选择器优先级
 >
-> ​	继承<通配符<标签<类<id<行内式<!important(提高优先级至最高，书写于需要提高的属性值后，分号前；继承属性无法提升)
+>	继承<通配符<标签<类<id<行内式<!important(提高优先级至最高，书写于需要提高的属性值后，分号前；继承属性无法提升)
 >
 > b. 选择器的叠加计算
 >
-> ​	（行内个数，id个数，类个数，标签个数）；个数相同比较下一个，哪一个多优先生效哪一个选择器
+>	（行内个数，id个数，类个数，标签个数）；个数相同比较下一个，哪一个多优先生效哪一个选择器
 >
-> ​		i. 行内1，id1，类0，标签1 与 行内0，id1，类0，标签1 ；优先生效前面的
+>		i. 行内1，id1，类0，标签1 与 行内0，id1，类0，标签1 ；优先生效前面的
 >
-> ​		ii. 行内0，id1，类0，标签1 与 行内0，id1，类1，标签1 ；优先生效后面的
+>		ii. 行内0，id1，类0，标签1 与 行内0，id1，类1，标签1 ；优先生效后面的
 
 1. 标签选择器（选择整类标签）
 
@@ -316,6 +316,7 @@
    
    div IU {CSS属性+取值} //div中的IU设置样式
    div IU2 {CSS属性+取值} //div中的IU2设置样式
+   ```
 
 6. 子代选择器（选择父级中的子级标签，中间用>隔开，只能选择子级，孙子级无法生效）
 
@@ -389,7 +390,7 @@
 
 ### 3. 盒子样式
 
->盒子样式分为：内容区域，边框，内边距，外边距；设置盒子样式默认会撑大盒子本身
+>	盒子样式分为：内容区域，边框，内边距，外边距；设置盒子样式默认会撑大盒子本身
 
 1. 内容区域content（由盒子宽高组成）
 
@@ -463,9 +464,9 @@
 
 > font可作为复合属性:
 >
-> ​	font：italic 700 数字+px 类型（顺序不能更改，前两个值可不写为默认值）
+>	font：italic 700 数字+px 类型（顺序不能更改，前两个值可不写为默认值）
 >
-> ​	行高可写在size后面，用“/”隔开
+>	行高可写在size后面，用“/”隔开
 
 1. 字体大小
 
@@ -529,7 +530,7 @@
 
 > background可作为复合标签使用
 >
-> ​	background：color image repeat position（空格隔开每个取值
+> background：color image repeat position（空格隔开每个取值）
 
 1. 背景颜色
 
@@ -585,7 +586,7 @@
 
 > 使用CSS模拟出的:行内元素效果
 >
-> ​	⚠️伪元素必须添加content""；否则无法生效，无文本内容引号内可留空
+>	⚠️伪元素必须添加content""；否则无法生效，无文本内容引号内可留空
 
 ```css 
 <div>
@@ -625,7 +626,7 @@ p::befor {content"",CSS属性+取值}  //在p标签最前添加一个伪元素
 >
 > d. 同层级关系：后面的内容会压住前面的内容（定位情况下）
 >
-> ​	//可用z-index:数字 提升显示优先级，数字越大越优先（需配合定位才能生效）
+>	//可用z-index:数字 提升显示优先级，数字越大越优先（需配合定位才能生效）
 
 1. 相对定位
 
@@ -661,9 +662,9 @@ p::befor {content"",CSS属性+取值}  //在p标签最前添加一个伪元素
    div {position:relativ}  //子绝父相
    .center {
    	position:absolute;
-     left:50%;
+    left:50%;
    	top:50%;
-     transform:translate(-50%,-50%);}
+    transform:translate(-50%,-50%);}
    ```
 
 ### 9. 溢出效果
@@ -727,11 +728,11 @@ vertical-align:bottom底部对齐
 >
 > b. 使用方法：
 >
-> ​	i. 下载字体包：[字体图标网](https://www.iconfont.cn/)
+>	i. 下载字体包：[字体图标网](https://www.iconfont.cn/)
 >
-> ​	ii. 引入字体图标：<link rel="stylesheet" href="下载字体包中的 iconfont.css 文件">
+>	ii. 引入字体图标：<link rel="stylesheet" href="下载字体包中的 iconfont.css 文件">
 >
-> ​	iii. 调用图标对应的类名，必须调用两个类名：<div class="iconfont icon-xxx"></div>
+>	iii. 调用图标对应的类名，必须调用两个类名：<div class="iconfont icon-xxx"></div>
 
 ![字体图标类名](./image/iconfont.png)
 
@@ -767,15 +768,15 @@ vertical-align:bottom底部对齐
    >
    > b. 左手法则：
    >
-   > ​	i. 用左手握住旋转轴，大拇指指向平面正数方向，手指弯曲方向为正数
+   >	i. 用左手握住旋转轴，大拇指指向平面正数方向，手指弯曲方向为正数
    >
-   > ​	ii. Y轴往下为正，X轴往右为正
+   >	ii. Y轴往下为正，X轴往右为正
    >
    > c. 同时存在多个转换效果：
    >
-   > ​	transform: translate() rotate() ;
+   >	transform: translate() rotate() ;
    >
-   > ​	// 多重转换涉及旋转的情况，旋转属性最后书写；
+   >	// 多重转换涉及旋转的情况，旋转属性最后书写；
 
    a. 平面旋转
 
@@ -850,14 +851,14 @@ vertical-align:bottom底部对齐
    ```css
    @keyfoames 动画名称（自定义）{
    	form {开始的CSS样式}
-     to {结束的CSS样式}
+   	to {结束的CSS样式}
    }   // 两个动画的效果
    
    @keyframes 动画名称（自定义）{
    	0% {}
-     10% {}
-     15% {}
-     100% {}
+    10% {}
+    15% {}
+    100% {}
    }   // 多个动画的效果; 百分比数值可以自定义（动画总时长的占比）
    ```
 
@@ -873,7 +874,7 @@ vertical-align:bottom底部对齐
    	重复次数：数字/infinite（无限循环）
    	动画方向：alternate（反向，使动画均匀变化）
    	执行完毕时状态：forwards（停留在最终状态）；backwards（默认，回到最初状态）
-        // 尽量不与重复次数和动画方向同时书写
+	// 尽量不与重复次数和动画方向同时书写
    ```
 
 3. 暂停动画
@@ -1084,11 +1085,11 @@ vertical-align:bottom底部对齐
 >
 > c. 使用步骤：
 >
-> ​	i. 下载官网中的：bootstrap3文档
+>	i. 下载官网中的：bootstrap3文档
 >
-> ​	ii. 引入bootstrap中的CSS代码：bootstrap.css / bootstrap.min.css两者都可
+>	ii. 引入bootstrap中的CSS代码：bootstrap.css / bootstrap.min.css两者都可
 >
-> ​	iii. 调用类名
+>	iii. 调用类名
 
 1. 栅格系统
 
@@ -1133,11 +1134,11 @@ vertical-align:bottom底部对齐
 >
 > b. JS的组成
 >
-> ​	i. JS语法
+>	i. JS语法
 >
-> ​	ii. DOM-页面文档对象模型
+>	ii. DOM-页面文档对象模型
 >
-> ​	iii. BOM-浏览器对象模型
+>	iii. BOM-浏览器对象模型
 
 ### 1. JS书写形式
 
@@ -1171,11 +1172,11 @@ vertical-align:bottom底部对齐
 
 > a. 单行注释 //xxx  
 >
-> ​	快捷键：“ctrl+/”
+>	快捷键：“ctrl+/”
 >
 > b. 多行注释 /* xxx */
 >
-> ​	快捷键：“shift+alt+a” 【VScode中可以自定义快捷键】
+>	快捷键：“shift+alt+a” 【VScode中可以自定义快捷键】
 
 ### 3. 输入输出语言
 
@@ -1199,15 +1200,15 @@ console.log('检查元素中显示的内容')
 
    >a. 声明变量
    >
-   >​	var age; // 声明一个名称为age的变量，变量名可自行设置  
+   >	var age; // 声明一个名称为age的变量，变量名可自行设置  
    >
    >b. 赋值（把值存入变量中）
    >
-   >​	age = 18; // 给age变量赋值为18
+   >	age = 18; // 给age变量赋值为18
    >
    >c. 变量初始化（将声明变量与赋值同时书写）
    >
-   >​	var age = 18;  //声明变量同时赋值18
+   >	var age = 18;  //声明变量同时赋值18
    >
    >// 可通过console.log(age);检查是否赋值成功
    >
@@ -1215,7 +1216,7 @@ console.log('检查元素中显示的内容')
 
    ```javascript
    <script>
-     var myname = prompy('输入用户名') // 用户输入后存储到myname变量中
+   	var myname = prompy('输入用户名') // 用户输入后存储到myname变量中
    	alert(myname) // 弹出用户输入的信息内容
    </script>
    ```
@@ -1302,11 +1303,11 @@ d. 把临时变量中的青苹果给apple2
 
       > a. 八进制（范围0～7）
       >
-      > ​	var num = 010 // 输出为8
+      > 	var num = 010 // 输出为8
       >
       > b. 十六进制（范围0～9；A～F）
       >
-      > ​	var num =0xA // 输出为10
+      >		var num =0xA // 输出为10
       >
       > c. JS中八进制前面加0，十六进制前面加0x；
 
@@ -1413,13 +1414,13 @@ d. 把临时变量中的青苹果给apple2
    >
    > b. 可通过浏览器检测面板进行判读
    >
-   > ​	i. 浅蓝色为数字型
+   >	i. 浅蓝色为数字型
    >
-   > ​	ii. 黑色为字符串型
+   >	ii. 黑色为字符串型
    >
-   > ​	iii. 深蓝色为布尔型
+   >	iii. 深蓝色为布尔型
    >
-   > ​	iv. 灰色为空值/为定义数据类型
+   >	iv. 灰色为空值/为定义数据类型
    >
    > c. 通过表单/prompt获取的数据默认是字符串型
 
