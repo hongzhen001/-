@@ -86,40 +86,28 @@ git pull
   </body>
 </html>
 
-扩展：CSS写入方式 内嵌式：在<head>
-  中添加
-  <style>
-    CSS属性+取值
-  </style>
-  外链式：在
-  <head>
-    中用
-    <link rel="stylesheet" href="css地址" />
-    引入 行内式：在
-    <body>
-      内写的标签中添加 style="CSS属性+取值"
-    </body>
-  </head>
-</head>
+扩展：CSS写入方式
+   a. 内嵌式：在<head>中添加:<style>CSS属性+取值</style>
+   c. 外链式：在<head>中用<link rel="stylesheet" href="css地址">
+   d. 引入行内式：在<body>内写的标签中添加 style="CSS属性+取值"
 ```
 
 ### 3. 网页基础标签
 
 ```html
-标题：
-<h1></h1>
-//分为一到六级 段落：
-<p></p>
+标题： <h1></h1> //分为一到六级 
 
-换行： <br />
+段落： <p></p>
 
-分割线
-<hr />
+换行： <br>
 
-块级容器：
-<div></div>
-//一行只能排一个 行内容器： <span></span> //一行可排多个 加粗：
-<strong></strong> //具有强调意义 <b></b>
+分割线：<hr>
+
+块级容器：<div></div> //一行只能排一个 
+
+行内容器： <span></span> //一行可排多个 
+
+加粗：<strong></strong> //具有强调意义 <b></b>
 
 下划线： <ins></ins> //具有强调意义 <u></u>
 
@@ -128,50 +116,34 @@ git pull
 删除线： <del></del> //具有强调意义 <s></s>
 
 插入图片：
-<img
-  src="图片路径位置"
-  alt="图片加载失败后显示的文本内容"
-  title="光标悬停时显示的文本内容"
-/>
+<img src="图片路径位置" alt="图片加载失败后显示的文本内容" title="光标悬停时显示的文本内容">
 
 音频标签：<audio src="音频位置" controls autoplay loop></audio>
-//controls:插入播放器 loop:循环播放 autoplay:自动播放 视频标签：<video
-  src="视频位置"
-  controls
-  autoplay
-  loop
-  muted
-></video>
-// 自动播放音频无法实现，视频配合muted静音可实现 超链接：<a
-  herf="跳转地址"
-  target="窗口打开方式"
-></a>
+//controls:插入播放器 loop:循环播放 autoplay:自动播放 
+
+视频标签：<video src="视频位置" controls autoplay loop muted></video>
+// 自动播放音频无法实现，视频配合muted静音可实现 
+
+超链接：<a herf="跳转地址" target="窗口打开方式"></a>
 // _blank 新窗口打开，跳转地址可用id名进行页面内跳转（书写：#id名）
 ```
 
 ### 4. 移动端语义化标签
 
 ```html
-头部：
-<header></header>
+头部：<header></header>
 
-导航：
-<nav></nav>
+导航：<nav></nav>
 
-内容：
-<article></article>
+内容：<article></article>
 
-文档某个区域：
-<section></section>
+文档某个区域：<section></section>
 
-侧边栏：
-<aside></aside>
+侧边栏：<aside></aside>
 
-尾部：
-<footer></footer>
+尾部：<footer></footer>
 
-页面主页：
-<main></main>
+页面主页：<main></main>
 ```
 
 ### 5. 列表/表格
@@ -193,7 +165,9 @@ git pull
   <dd>主题介绍，可嵌套任意标签</dd>
 </dl>
 
-// 清除列表自带形式： list-style：none（CSS） // 表格：
+// 清除列表自带样式： list-style：none（CSS） 
+
+// 表格：
 <table border="边框大小属性：数字+px">
   <caption>
     表格标题，默认加粗
@@ -207,10 +181,8 @@ git pull
   </tr>
 </table>
 
-// 表格结构：thead头部；tbody主体；tfoot尾部；结构书写于
-<table>
-  内 //
-  单元格合并：colspan：水平单元格合并；rowspan：垂直单元格合并；如有书写表格结构，不能跨结构合并单元格
+// 表格结构：thead头部；tbody主体；tfoot尾部；结构书写于<table>内 
+// 单元格合并：colspan：水平单元格合并；rowspan：垂直单元格合并；如有书写表格结构，不能跨结构合并单元格
 </table>
 ```
 
@@ -224,10 +196,11 @@ git pull
   密码框：<input type="password" placeholder="“预显示文字内容”" />
 
   单选：<input type="radio" name=“单选需添加相同名才可生效” checked"默认选中">
+  
   多选：<input type="checkbox" checked"默认选中"> 文件：<input type="file"
-  multiple"选择多个文件"> 下拉：<select name="" id="">
-    <option value="" selected默认选中>下拉显示的内容，有几个写几个</option>
-  </select>
+  multiple"选择多个文件"> 
+  
+  下拉：<select name="" id=""><option value="" selected默认选中>下拉显示的内容，有几个写几个</option></select>
 
   邮箱: <input type="email" />
 
@@ -283,52 +256,56 @@ git pull
 
 - 块级元素
 
-  - 独占一行，可设置宽高
-  - 如：div，h1，p，ul，li 等
+> 独占一行，可设置宽高
+>
+> 如：div，h1，p，ul，li 等
 
 - 行内元素
 
-  - 一行显示多个，不可设置宽高
-  - 如 span，a，i，em 等
+>一行显示多个，不可设置宽高
+>
+> 如 span，a，i，em 等
 
 - 行内块元素
 
-  - 一行显示多个，可设置宽高
-  - 如 img，input 等
+> 一行显示多个，可设置宽高
+>
+> 如 img，input 等
+
 
 - 元素转换方式
 
   ```css
-  display:block //块级
-  display:inline-block //行内块
-  display:inline  //行内
+  display: block // 块级
+  display: inline-block // 行内块
+  display: inline  // 行内
   ```
 
 2. 元素特性
 
 > a. 继承性
 >
->     子级继承父级元素的文字样式，如自身存在相应样式则不会继承（继承优先级最低）
+> 子级继承父级元素的文字样式，如自身存在相应样式则不会继承（继承优先级最低）
 >
->     特例：a不能继承color属性，h1不能继承font-size属性
+> 特例：a不能继承color属性，h1不能继承font-size属性
 >
 > b. 层叠行
 >
->     父子级中不同样式可叠加，相同样式优先级高的会覆盖优先级低的样式（优先级按CSS选择器进行计算）
+> 父子级中不同样式可叠加，相同样式优先级高的会覆盖优先级低的样式（优先级按CSS选择器进行计算）
 
 ### 2. CSS 选择器
 
 > a. 选择器优先级
 >
->     继承<通配符<标签<类<id<行内式<!important(提高优先级至最高，书写于需要提高的属性值后，分号前；继承属性无法提升)
+>继承<通配符<标签<类<id<行内式<!important(提高优先级至最高，书写于需要提高的属性值后，分号前；继承属性无法提升)
 >
 > b. 选择器的叠加计算
 >
->     （行内个数，id个数，类个数，标签个数）；个数相同比较下一个，哪一个多优先生效哪一个选择器
+>（行内个数，id个数，类个数，标签个数）；个数相同比较下一个，哪一个多优先生效哪一个选择器
 >
->     i. 行内1，id1，类0，标签1 与 行内0，id1，类0，标签1 ；优先生效前面的
+> i. 行内1，id1，类0，标签1 与 行内0，id1，类0，标签1 ；优先生效前面的
 >
->     ii. 行内0，id1，类0，标签1 与 行内0，id1，类1，标签1 ；优先生效后面的
+> ii. 行内0，id1，类0，标签1 与 行内0，id1，类1，标签1 ；优先生效后面的
 
 1. 标签选择器（选择整类标签）
 
@@ -378,7 +355,7 @@ git pull
    ```css
    <div>
    	<p class="IU">
-   		<div class="IU2"></div>
+   	   <div class="IU2"></div>
    	</p>
    </div>
 
@@ -514,9 +491,9 @@ git pull
 
 > font 可作为复合属性:
 >
->     font：italic 700 数字+px 类型（顺序不能更改，前两个值可不写为默认值）
+> font：italic 700 数字+px 类型（顺序不能更改，前两个值可不写为默认值）
 >
->     行高可写在size后面，用“/”隔开
+> 行高可写在size后面，用“/”隔开
 
 1. 字体大小
 
@@ -641,7 +618,7 @@ git pull
 
 > 使用 CSS 模拟出的:行内元素效果
 >
->     ⚠️伪元素必须添加content""；否则无法生效，无文本内容引号内可留空
+> ⚠️伪元素必须添加content""；否则无法生效，无文本内容引号内可留空
 
 ```css 
 <div>
@@ -781,13 +758,12 @@ vertical-align:bottom // 底部对齐
 >
 > b. 使用方法：
 >
->     i. 下载字体包：[字体图标网](https://www.iconfont.cn/)
+> i. 下载字体包：[字体图标网](https://www.iconfont.cn/)
 >
->     ii. 引入字体图标：<link rel="stylesheet" href="下载字体包中的 iconfont.css 文件">
+> ii. 引入字体图标： `<link rel="stylesheet" href="下载字体包中的 iconfont.css 文件">`
 >
->     iii. 调用图标对应的类名，必须调用两个类名：<div class="iconfont icon-xxx"></div>
+> iii. 调用图标对应的类名，必须调用两个类名：`<div class="iconfont icon-xxx"></div>`
 
-![字体图标类名](./image/iconfont.png)
 
 ### 2. 转换效果
 
@@ -859,8 +835,6 @@ vertical-align:bottom // 底部对齐
 
 3.  缩放
 
-    > [平面效果.html](案例/平面效果.html)
-
     a. 平面缩放
 
     ```css
@@ -879,8 +853,6 @@ vertical-align:bottom // 底部对齐
 
 4.  立方体
 
-    > [3D 导航案例.html](案例/3D导航案例.html)
-
     ```css
     transform-style: preserve-3d;  // 给父级添加
 
@@ -896,8 +868,6 @@ vertical-align:bottom // 底部对齐
 > a. 多组动画的情况下，在第一个动画属性值后用逗号隔开再添加属性值即可
 >
 > b. 配合过渡效果使用
-
-![动画属性与取值](./image/ani.png)
 
 1. 定义动画
 
@@ -955,13 +925,13 @@ vertical-align:bottom // 底部对齐
 
    > i. rem 单位：相对单位；依据 HTML 标签的字号计算尺寸；
    >
-   > ii. 1rem=1HTML 字号大小=1/10 视口宽度 /_ 375 宽的设备为 1rem=37.5 _/
+   > ii. 1rem=1HTML 字号大小=1/10 /视口宽度； 375宽的设备为 1rem=37.5
 
 3. vw/vh
 
    > i. vw:viewport width; vh:viewport hight;
    >
-   > ii. 1vw=1/100 视口宽度； 1vh=1/100 视口高度； /_ 375 宽的设备为 1vw=3.75 _/
+   > ii. 1vw=1/100 视口宽度； 1vh=1/100 视口高度； 375宽的设备为 1vw=3.75
    >
    > iii. vw/vh 不同时设置，取其一即可
 
@@ -1044,12 +1014,12 @@ vertical-align:bottom // 底部对齐
    	// 再给父级添加 flex:1; widht:0;
 
    b. 两行显示，超过显示省略号
-       overflow: hidden;  // 超出的文本隐藏
-       text-overflow: ellipsis; // 溢出用省略号显示
-       white-space: nowrap; // 溢出不换行
-       display: -webkit-box; // 将对象作为弹性伸缩盒子模型显示。
-       -webkit-line-clamp: 2; // 这个属性不是css的规范属性，需要组合上面两个属性，表示显示的行数。
-       -webkit-box-orient: vertical;  // 从上到下垂直排列子元素（设置伸缩盒子的子元素排列方式）
+      overflow: hidden;  // 超出的文本隐藏
+      text-overflow: ellipsis; // 溢出用省略号显示
+      white-space: nowrap; // 溢出不换行
+      display: -webkit-box; // 将对象作为弹性伸缩盒子模型显示。
+      -webkit-line-clamp: 2; // 这个属性不是css的规范属性，需要组合上面两个属性，表示显示的行数。
+      -webkit-box-orient: vertical;  // 从上到下垂直排列子元素（设置伸缩盒子的子元素排列方式）
    ```
 
 ### 6. Less 语法
@@ -1140,11 +1110,11 @@ vertical-align:bottom // 底部对齐
 >
 > c. 使用步骤：
 >
->     i. 下载官网中的：bootstrap3文档
+> i. 下载官网中的：bootstrap3文档
 >
->     ii. 引入bootstrap中的CSS代码：bootstrap.css / bootstrap.min.css两者都可
+> ii. 引入bootstrap中的CSS代码：bootstrap.css / bootstrap.min.css两者都可
 >
->     iii. 调用类名
+> iii. 调用类名
 
 1. 栅格系统
 
@@ -1192,11 +1162,11 @@ vertical-align:bottom // 底部对齐
 >
 > b. JS 的组成
 >
->     i. JS语法
+> i. JS语法
 >
->     ii. DOM-页面文档对象模型
+> ii. DOM-页面文档对象模型
 >
->     iii. BOM-浏览器对象模型
+> iii. BOM-浏览器对象模型
 
 ### 1. JS 书写形式
 
@@ -1226,13 +1196,10 @@ vertical-align:bottom // 底部对齐
 
 ### 2. 注释
 
-> a. 单行注释 //xxx
+> a. 单行注释 //xxx   快捷键：“ctrl+/”
 >
->     快捷键：“ctrl+/”
+> b. 多行注释 /_ xxx _/    快捷键：“shift+alt+a” 【VScode中可以自定义快捷键】
 >
-> b. 多行注释 /_ xxx _/
->
->     快捷键：“shift+alt+a” 【VScode中可以自定义快捷键】
 
 ### 3. 输入输出语言
 
@@ -1256,15 +1223,15 @@ console.log('检查元素中显示的内容');
 
     > a. 声明变量
     >
-    >     var age; // 声明一个名称为age的变量，变量名可自行设置
+    > var age; // 声明一个名称为age的变量，变量名可自行设置
     >
     > b. 赋值（把值存入变量中）
     >
-    >     age = 18; // 给age变量赋值为18
+    > age = 18; // 给age变量赋值为18
     >
     > c. 变量初始化（将声明变量与赋值同时书写）
     >
-    >     var age = 18;  //声明变量同时赋值18
+    > var age = 18;  //声明变量同时赋值18
     >
     > // 可通过 console.log(age);检查是否赋值成功
     >
