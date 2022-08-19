@@ -2417,7 +2417,6 @@ for (var i = arr.length - 1; i >= 0; i--) {
    var re = getMax([5,2,99,101]);  // 实际开发中常用一个变量接收函数的返回结果
    console.log(re); // 输出为101；
    ```
-
 5. arguments 的使用
 
    ```javascript
@@ -2439,4 +2438,447 @@ for (var i = arr.length - 1; i >= 0; i--) {
          console.log(arguments[i]);
       }
    }
+
+   ❤️案例：利用函数求最大值
+   function getMax(){
+      var max = arguments[0];
+      for (var i = 1; i < arguments.length; i++){
+         if(arguments[i] > max){
+         max = arguments;
+         }
+      }
+      return max;
+   }
    ```
+
+6. 函数相互调用
+
+   ```javascript
+   function fn1(){
+     fn2();  // 在fn1中调用fn2函数
+   }
+   fn1();
+   function fn2(){
+   }
+   
+   // 用户输入年份，输出当前年份2月份的天数
+   function backDay() {
+      var year = prompt('请输入一个年份');
+      if (isRunYear(year)) {  // 调用isRunYear函数
+         alert('这是一个闰年2月份为29天');
+      } else {
+         alert('这是一个平年2月份为28天');
+      }
+   }
+   backDay();
+   
+   function isRunYear(year) {
+      var flag = false;
+      if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+         flag = true;
+      }
+      return flag;
+   }
+   ```
+
+2. 函数的两种声明方式
+
+   ```javascript
+   a. 利用函数关键字自定义函数
+   	function fn(){} // 定义函数
+   	fn(); // 调用函数
+   b. 函数表达式（匿名函数）
+   	var 变量名 = function(){} // 利用变量定义函数
+   	变量名(); // 调用函数
+   
+   var fun = function(aru){
+      console.log(aru);
+   }
+   fun('IU');  // 输出IU
+   ```
+
+❤️案例
+
+```javascript
+// 利用函数翻转任意数组
+function reverse(arr){
+   var newArr = [];
+   for(var i = arr.length - 1; i >= 0; i--){
+      newArr[newArr.length] = arr[i];
+   }
+   return newArr;
+}
+var arr1 = reverse([1,2,3,4,5]);
+console.log(arr1);  // 输出结果为[5,4,3,2,1]
+
+// 利用函数封装冒泡排序
+function aort(arr){
+   for (var i = 0; i < arr.length -1; i++){
+      for (var j = 0; j < arr.length - i -1; j++){
+         if (arr[j] > arr[j + 1]{
+      	var temp = arr[j];
+      	arr[j] = arr[j + 1];
+      	arr[j + 1] = remp;    
+         }
+      }
+   }
+   return arr;
+}
+var arr1 = aort([1,2,3,4,5]);
+console.log(arr1);
+
+// 输入年份，判断是否为闰年
+function isRunYear(year){
+   // 如果是闰年返回true 否则返回false
+   var flag = false;
+   if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+      flag = true;
+   }
+   return flag;
+}
+```
+
+### 11. javaScrip作用域
+
+> a. 代码名字（变量）在某个范围内起作用和效果
+>
+> b. 目的是为了提高程序的可靠性，更重要的是减少命名冲突
+
+1. js作用域（es5）的分类
+
+   > a. 全局作用域：整个script标签中或一个单独的js文件（在全局下都能调用）
+   >
+   > b. 局部作用域：在函数内部就是局部作用域（只在函数内起作用和效果）
+   >
+   > c. 在不同作用域下相同变量名不会冲突
+   >
+   > d. es5中js没有块级作用域。es6中有（块级作用域是{}中的内容）
+
+2. 变量作用域的分类
+
+   > a. 全局变量：整个script标签中或一个单独的js文件（在全局下都能调用）
+   >
+   > b. 局部变量：在函数内部就是局部作用域（只在函数内起作用和效果）
+   >
+   > c. 如果在函数内部没有声明，直接赋值的变量也属于全局变量
+   >
+   > d. 函数的形参也属于局部变量
+   >
+   > e. 全局变量只有浏览器关闭时才会销毁，占内存资源大；局部变量在程序执行完毕就会销毁，比较节约内存资源
+
+3. 作用域链
+
+   ```javascript
+   var num = 1;
+   function fun(){
+      var num = 2;
+      function fn(){
+         console.log(num);  // 输出为2，作用域链会一层层向外查找相应的数据；
+      }
+   }
+   ```
+
+### 12. javaScrip预解析
+
+> a. js引擎运行js分为两步：预解析和代码执行
+>
+> b. 预解析：js引擎会把js里面的var还有function提升到当前作用域的最前面
+>
+> c. 代码执行：按照代码书写的顺序从上往下执行
+
+```javascript
+a. 变量预解析（变量提升）:将所有的变量声明提升到当前的作用域最前面，不提升赋值操作
+
+console.log(num);
+var num = 10;  // 输出为undefined
+
+b. 函数预解析（函数提升）:将所有的函数声明提升到当前的作用域最前面，不调用函数
+
+fun();
+function fun(){
+   console.log(11);
+}   // 可正常输出11结果
+
+❤️案例：
+var num = 10;
+fun();
+function fun(){
+   console.log(num);
+   var num = 20;
+}
+// 执行代码如下：
+var num; // 变量提升到全局的最前面
+function fun(){  // 函数提升到全局的最前面
+   var num; // 变量提升到当前函数作用域的最前面
+   console.log(num);  // 输出结果为undefined，当前num未赋值
+   num = 20;
+}
+num = 10;
+fun();
+```
+
+### 13. 自定义对象
+
+> a. 对象是一组无序的相关属性和方法的集合，如：字符串/数组/数值/函数等
+>
+> b. 属性：事物的特征，在对象中用属性来表示（常用名词）
+>
+> c. 方法：事物的行为，在对象中用方法来表示（常用动词）
+>
+> d. 对象表达结构更清晰，更强大，可以保存一整个完整信息库
+>
+> ⚠️ js对象分为：自定义对象、内置对象、浏览器对象
+
+1. 创建对象-字面量创建
+
+   > a. 变量是单独声明并赋值，使用的时候直接写变量名（单独存在）
+   >
+   > b. 属性在对象里不需要声明，使用时必须是 对象名.属性名/对象名['属性名']
+   >
+   > c. 函数是单独声明并调用 函数名()（单独存在）
+   >
+   > d. 方法在对象里调用时 对象名.方法()
+
+   ```javascript
+   ⚠️ 一次只能创建一个对象
+   // 创建对象
+   var obj = {
+      uname:'IU', // 多个属性或方法用逗号隔开
+      age:18,
+      sex:'女',
+      sayHi:function(){
+         console.log('hi~');
+      }
+   }  
+   // 调用对象
+   console.log(obj.uname);  // 调用对象属性（方法一）
+   console.log(obj['age']); // 调用对象属性（方法二）
+   obj.sayHi(); // 调用对象方法
+   ```
+
+2. 创建对象-new Object创建对象
+
+   ```javascript
+   ⚠️ 一次只能创建一个对象
+   // 创建对象
+   var obj = new Object();
+   obj.uname = 'IU'; // 多个属性或方法用分号隔开
+   obj.age = 18;
+   obj.sex = '女';
+   obj.sayHi = function(){
+      console.log('hi~');
+   }
+   // 调用对象
+   console.log(obj.uname);  // 调用对象属性（方法一）
+   console.log(obj['age']); // 调用对象属性（方法二）
+   obj.sayHi(); // 调用对象方法
+   ```
+
+3. 创建对象-构造函数创建对象
+
+   ```javascript
+   ⚠️ 一次创建多个对象，构造函数是泛指某一大类，构造函数创建对象的过程称为对象的实例化
+   // 创建对象
+   function Star(uname,age,sex){  // 构造函数名首字母必须大写
+      this.name = uname;
+      this.age = age;
+      this.sex = sex;
+      this.sing = function(sang){
+         console.log('sang')
+      }
+   }  // 构造函数不需要return就可以返回结果
+   // 调用对象
+   var ldh = new Star('刘德华'，18,'男');
+   console.log(ldh.name);
+   ldh.sing('冰雨'); // 调用对象方法
+   
+   // new关键词的执行步骤
+   a. new构造函数可以在内存中创建一个空的对象
+   b. this指向创建的空对象
+   c. 执行构造函数中的代码，给空对象添加属性和方法
+   d. 返回对象
+   ```
+
+4. 遍历对象属性
+
+   ```javascript
+   var obj = {
+      uname:'IU',
+      age:18,
+      sex:'女',
+   }
+   // 利用for(变量 in 对象)遍历所有对象
+   for(var k in obj){  // for..in中常用k或key
+      console.log(k); // 输出为属性名
+      console.log(obj[k]); // 输出为属性值
+   }
+   ```
+
+### 14. 内置对象
+
+> 内置对象指js自带的一些对象，这些对象供开发者使用且提供了一些常用或基本必要的属性和方法
+>
+> 文档查询：[MDN](https://developer.mozilla.org/en-US/)/W3C
+
+1. Math函数
+
+   ```javascript
+   Math不是一个构造函数，直接使用即可
+   console.log(Math.PI);  // 输出圆周率
+   console.log(Math.max(1,2,3));  // 输出为最大值3
+   console.log(Math.max(1,'IU'));  // 输出为NaN，非数字无法判定最大值
+   console.log(Math.max());  // 输出-Infinity
+   
+   console.log(Math.abs('-1'));  // 绝对值，输出为1，存在隐式转换
+   console.log(Math.abs('IU'));  // 输出为NaN
+   console.log(Math.floor(1.9));  // 向下取整，取最小值，输出1
+   console.log(Math.ceil(1.1));  // 向上取整，取最大值，输出2
+   console.log(Math.round(1.5));  // 就近取整，四舍五入，输出为2（若为负值，-1.5 输出为 -1）
+   
+   // 随机数random()；返回一个浮点数，范围为(>=0;<1)；里面不跟参数
+   function getRandom(min,max){
+      Math.ceil = max;
+      Math.floor = min;
+      return Math.floor(Math.random()*(max - min + 1))+min;
+   }  // 输出两个数之间的随机整数且包括这两个数
+   
+   ```
+
+2. 日期对象（Date）
+
+   ```javascript
+   Date是一个构造函数，需要new来调用创建日期对象
+   
+   var date = new Date();
+   console.log(date);  // 如果Date没有参数则返回系统当前时间
+   
+   var date = new Date(2019,10,01);  // 输出为：2019年11月1日（数字型参数，不能有分秒）
+   var date = new Date('2019-10-1 6:6:6');  // 输出为：2019年10月1日，6点6分6秒（字符串型参数，可以有分秒）
+   
+   日期格式化：
+   console.log(date.getFullYear()); // 返回当前年份
+   console.log(date.getMonth() + 1); // 返回当前月份,需要+1(计算机计算月份从0-11)
+   console.log(date.getDate()); // 返回当前日
+   console.log(date.getDay()); // 返回星期几（周日返回为0）
+   console.log(date.getHours()); // 返回当前小时
+   console.log(date.getMinutes); // 返回当前分钟
+   console.log(date.getSeconds); // 返回当前秒数
+   
+   Date的时间从1970年1月1日开始计算
+   // 获取Date总毫秒数(时间戳)，现在时间距离1970-1-1的总毫秒数
+   方法一：用valueOf 或 getTime
+   var date = new Date();
+   console.log(date.valueOf());
+   console.log(date.getTime());
+   
+   方法二：在new前补上+（常用写法）
+   var date1 = +new Date();
+   console.log(date1);
+   
+   方法三：Date.now(),H5新增
+   console.log(Date.now());
+   
+   时间转换公式：
+   d = parseInt（总秒数 / 60 / 60 / 24）； // 计算天数
+   h = parseInt（总秒数 / 60 / 60 % 24）； // 计算小时
+   m = parseInt（总秒数 / 60 % 60）； // 计算分钟
+   s = parseInt（总秒数 % 60）； // 计算秒数
+   ```
+
+3. 数组对象
+
+   ```javascript
+   // 检测是否为数组
+   a. instanceof 运算符
+   var arr = [];
+   var obj = {};
+   console.log(arr instanceof Array); // 返回ture，是数组
+   console.log(obj instanceof Array); // 返回false，不是数组
+   
+   b.Array.isArray() , H5新增
+   var arr = [];
+   var obj = {};
+   console.log(Array.isArray(arr)); // 返回ture，是数组
+   console.log(Array.isArray(obj)); // 返回false，不是数组
+   
+   // 添加删除数组元素
+   var arr = [1,2,3];
+   a. push() 在数组末尾添加一个或多个数组元素
+   arr.push(4); // 输出arr为1，2，3，4，括号内直接写数组元素
+   console.log(arr.push(4)); // 输出为4（数组长度）
+   
+   b. unshift() 在数组开头添加一个或多个数组元素
+   arr.unshift(4); // 输出arr为4，1，2，3
+   console.log(arr.unshift(4)); // 输出为4（数组长度）
+   
+   c. pop() 删除数组最后一个元素
+   arr.pop(); // 输出为1，2；括号内不写参数
+   console.log(arr.pop()); // 输出为3（删除的那个元素）
+   
+   d. shift() 删除数组第一个元素
+   arr.shift(); // 输出为2，3；
+   console.log(arr.shift()); // 输出为1（删除的那个元素）
+   
+   // 数组排序
+   a. 翻转数组
+   var arr =[1,2,3,4];
+   arr.reverse();
+   console.log(arr); // 输出为[4,3,2,1]
+   
+   b. 冒泡排序
+   var arr = [1,3,2,5,4];
+   arr.sort(); // 只能实现个位数从小到大排序
+   console.log(arr); // 输出为[1,2,3,4,5];
+   arr.sort(function(a,b){  // 可以实现多位数排序
+      return a - b; // 升序排列
+      return b - a; // 降序排列
+   })
+   
+   // 数组索引方法(数组去重方法)
+   var arr = ['red','green','blue','pink'];
+   a. indexOf(数组元素)，从前往后查询，存在多个相同元素时只返回数组第一个满足条件的索引号，若数组无该元素返回为-1
+   console.log(arr.indexOf('blue'));  // 输出为2，索引号为2
+   
+   b. lastIndixOf(数组元素)，从后往前查询，存在多个相同元素时只返回数组最后一个满足条件的索引号，若数组无该元素返回为-1
+   console.log(arr.laseIndexOf('green')); // 输出为1，索引号为1
+   
+   // 数组转换为字符串
+   var arr = [1,2,3];
+   a. toString() 多个值之间用逗号分隔（默认）
+   console.log(arr.toString()); // 输出为1，2，3
+   
+   b. join() 括号内为多个值之间的分隔符号，可自定义(默认为逗号分隔)
+   console.log(arr.join('&')); // 输出为1&2&3
+   
+   // 连接数组
+   concat() 连接两个或多个数组，返回一个新数组，不影响原数组
+   var arr = [1,2,3,4,5];
+   var arr1 = [6,7,8,9];
+   var newArr = arr.concat(arr1);
+   console.log(newArr);  // 输出为[1,2,3,4,5,6,7,8,9]
+   
+   // 数组截取
+   slice(start, end) 数组截取start到end的元素（不包括end）
+   // 括号内可留空，则输出原始数组（括号内为元素索引号）
+   // start与end可只写一个，则输出相应索引号之后的元素
+   // 为负值的则从后往面算相应的个数
+   // start大于数组索引号，则返回一个空数组，end大于索引号，则取到数组最后一个元素
+   var arr = ['ant', 'bison', 'camel', 'duck','pink','elephant'];
+   console.log(-2)； // 输出为['pink','elephant']
+   console.log(2,-2); // 输出为['camel', 'duck']
+   console.log(2,5); // 输出为['camel', 'duck','pink'],不包含第5个元素
+   
+   // 数组删除
+   splice(数字) 数组删除
+   // 括号中第一数代表数组中第几个元素（若为负值则从后往前计算相应个数），若果只有一个数，则代表删除这个数后面的所有元素
+   // 括号中第二数代表第一个数开始后面的多少个元素（增加元素时可为0）
+   // 括号中第三个开始代表数组内需要添加的元素
+   var arr = ['IU','IU1','IU2','IU3'];
+   arr.splice(3);  // 输出为['IU','IU1','IU2'],删除第三个元素之后的所有元素
+   arr.splice(3,0,'IU4');  // 输出为['IU','IU1','IU2','IU4','IU3'],在第三个元素后添加一个新元素
+   arr.splice(3,2); // 输出为['IU','IU1','IU2'],删除第三个元素后的两个元素
+   arr.splice(-3,2); // 输出为['IU','IU3'],删除倒数第三个元素后的两个
+   ```
+
+4. 字符串对象
+
