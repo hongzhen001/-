@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 随机生成1～10之间的数字，并让用户输入一个数字
+      // 若大于该数字，则提示数字大了，继续猜
+      // 若小于该数字，则提示数字笑了，继续猜
+      // 若等于该数字，则提示猜对了，结束程序
+      function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      var num = getRandom(1, 50);
+      while (true) {
+        // 设置一个死循环
+        var age = prompt('请输入一个数字');
+        if (age > num) {
+          alert('数字大了，继续猜');
+        } else if (age < num) {
+          alert('数字小了，继续猜');
+        } else {
+          alert('猜对了');
+          break; // 猜对可结束循环，否则一直循环
+        }
+      }
+
+      // 上述案例修改为：只可猜10次，10次未猜中则结束游戏
+      for (var i = 1; i <= 10; i++) {
+        var age = prompt('请输入一个数字');
+        if (age > num) {
+          alert('数字大了，继续猜');
+        } else if (age < num) {
+          alert('数字小了，继续猜');
+        } else {
+          alert('猜对了');
+          break;
+        }
+      }
+    </script>
+  </body>
+</html>

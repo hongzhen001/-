@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>创建函数-构造函数</title>
+    <script>
+      function Hero() {
+        this.name = arguments[0];
+        this.type = arguments[1];
+        this.blood = arguments[2];
+        this.attack = function (attack) {
+          console.log(attack);
+        };
+      }
+      var lp = new Hero('廉颇', '力量型', '500血量');
+      console.log(lp.name);
+      console.log(lp['type']);
+      console.log(lp.blood);
+      lp.attack('近战');
+    </script>
+  </head>
+  <body></body>
+</html>

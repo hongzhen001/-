@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var sum = 100; // 整体设置余额数为sum，存取多次后余额都能统一，退出后余额重置
+      while (true) {
+        // 设置一个初始弹窗
+        var oper = prompt(
+          '请输入您要的操作：\n 1.存钱 \n 2.取钱 \n 3.显示余额 \n 4.退出'
+        );
+        // 利用if将则进入一个步骤
+        if (oper == '1') {
+          var saver = parseFloat(prompt('请输入存钱金额'));
+          var sum = saver + sum;
+          alert('目前余额为：' + sum);
+        }
+        // 结束后回到第一个弹窗，继续下一步
+        if (oper == '2') {
+          var get = parseFloat(prompt('请输入取钱金额'));
+          var sum = sum - get;
+          alert('目前余额为：' + sum);
+        }
+        if (oper == '3') {
+          alert('目前余额为：' + sum);
+        }
+        // 设置用户输入为4 则退出循环
+        if (oper == '4') {
+          break;
+        }
+      }
+    </script>
+  </body>
+</html>

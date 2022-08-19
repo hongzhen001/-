@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>创建对象-字面量</title>
+    <script>
+      // 创建对象
+      var obj = {
+        //创建对象属性
+        uname: '可可', // 多个属性或方法用逗号隔开
+        type: '阿拉斯加犬',
+        age: 5,
+        color: '棕红色',
+        // 创建对象方法
+        sayBark: function () {
+          console.log('汪汪汪');
+        },
+        showFilm: function () {
+          console.log('演电影');
+        },
+      };
+      // 调用对象属性
+      for (var k in obj) {
+        console.log(obj[k]);
+      } // 遍历所有对象包括方法
+
+      // console.log(obj.uname);
+      // console.log(obj['type']); // 引号不能漏
+      // console.log(obj.age);
+      // console.log(obj['color']);
+
+      // 调用对象方法
+      obj.sayBark();
+      obj.showFilm();
+    </script>
+  </head>
+  <body></body>
+</html>

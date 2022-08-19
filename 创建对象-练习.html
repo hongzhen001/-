@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>创建对象-练习</title>
+    <script>
+      // 1. 创建一个电脑对象，对象中存在颜色、重量、品牌、型号、可以看电听音乐打游戏敲代码
+      var windows = {
+        color: 'red',
+        age: '15kg',
+        sex: 'iPhone',
+        sexs: '13pro',
+        Movies: function () {
+          console.log('看电影');
+        },
+        Muise: function () {
+          console.log('听音乐');
+        },
+        Game: function () {
+          console.log('打游戏');
+        },
+        Code: function () {
+          console.log('敲代码');
+        },
+      };
+      for (var k in windows) {
+        console.log(windows[k]);
+      }
+      // console.log(windows['color']);
+      // console.log(windows['age']);
+      // console.log(windows['sex']);
+      // console.log(windows['sexs']);
+      // windows.Movies();
+      // windows.Muise();
+      // windows.Game();
+      // windows.Code();
+
+      // 2.创建一个按钮对象，包含宽，高，背景颜色，点击行为
+      function btt() {
+        this.width = arguments[0];
+        this.height = arguments[1];
+        this.background = arguments[2];
+        this.onlick = function (onlick) {
+          console.log(onlick);
+        };
+      }
+      var btt1 = new btt('100px', '200px', 'pink');
+      for (var key in btt1) {
+        console.log(btt1[key]);
+      }
+      btt1.onlick('点击');
+
+      // 3.创建一个车对象，包含重量、颜色、车牌、可以载人、拉货、耕田
+      var car = new Object();
+      car.age = '100kg';
+      car.color = 'red';
+      car.num = 'A6666';
+      car.beMan = function () {
+        console.log('可以载人');
+      };
+      car.carrGood = function () {
+        console.log('可以拉货');
+      };
+      car.Till = function () {
+        console.log('可以耕田');
+      };
+      for (var l in car) {
+        console.log(car[l]);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
