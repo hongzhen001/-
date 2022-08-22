@@ -2882,3 +2882,101 @@ fun();
 
 4. 字符串对象
 
+   ```javascript
+   基本包装类型：把简单数据类型包装成为复杂数据类型
+   var str = 'andy';
+   console.log(str.length);
+   // 执行思路：
+   var temp = new String('andy'); // 将简单数据类型包装为复杂数据类型
+   str = temp; // 把临时变量的值给str
+   temp = null; // 销毁临时变量
+   
+   字符串的不可变：指里面的值不可变，虽然看上去可以改变内容，但只是地址变了，在内存中新开辟了一个空间存放新值
+   var str = 'andy';
+   str = 'IU';  // andy值还存在，IU值另开辟了一个新的空间，数据量大的情况下加载变慢
+   
+   a. 字符返回位置，indexOf('要查找的字符',[起始的位置])
+   var str = '改革春风吹满地';
+   console.log(str.indexOf('春')); // 返回值为2
+   console.log(str.indexOf('春',3))； // 从索引3开始往后查找春
+   
+   ❤️案例：返回'abcoefoxyozzopp'中o的位置以及次数
+   function str(str){
+      var index = str.indexOf('o');
+      var num = 0; // 设置出现次数变量
+      while(index !== -1){tr
+   	   console.log(index);
+         num++; // 出现一次自加1
+         index = str.indexOf('o',index + 1);
+      }
+      console.log(num);
+   }
+   str('abcoefoxyozzopp');
+   
+   b. 根据位置返回字符
+   1. charAt(索引号)；
+   var str = 'andy';
+   console.log(str.charAt(3)); // 输出为y
+   2. charCodeAt(索引号)；返回相应索引号的字符ASCII值，判断用户按下了哪个键
+   console.log(str.charCodeAt(0)); // 小写a对应的ASCII为97
+   3. str[索引号]，H5新增
+   console.log(str[0]); // 输出为a
+   
+   扩展：
+   var o = {
+      age:19
+   }
+   if (o['age']){
+      console.log('存在该属性')
+   }  // 这里可以用来判断对象中是否有该属性
+   
+   c. 字符串操作方法
+   1. concat() 连接两个字符串，等价于+
+   var str = 'andy';
+   console.log(str.concat('red'));  // 输出为andyred，andy+red
+   
+   2. 截取字符床：substr('截取的起始位置','截取几个字符')
+   var str = '改革春风吹满地';
+   console.log(str.substr(2,2)); // 从索引号2开始取2个字符，输出为'春风'
+   
+   3. 替换字符床：replace('被替换的字符','替换为的字符')
+   var str = 'andy';
+   console.log(str.replace('a','b')); // 输出为bndy,若存在多个相同字符的情况下，只会替换第一个字符
+   
+   4. 字符串转换为数组：split('分隔符')，分隔符取决于字符串中的分隔符号
+   var str = 'red,pink,blue';
+   console.log(str.split(','));  // 输出为['red','pink','blue']
+   
+   5. 转换大小写：
+   toUpperCase() // 转换为大写
+   toLowerCase() // 转换为小写
+   ```
+
+### 15. javaScrip简单类型与复杂类型
+
+> a. 简单类型：又称为简单数据类型或值类型，如：string/number/Boolean/underfined/null
+>
+> ​	null比较特殊，var timer = null；console.log(typeof timer); 返回的值是一个空对象Object（故后续可以用null代替空对象）
+>
+> b. 复杂类型：又称为引用数据类型，通过new关键字创建的对象都为复杂类型，如：Object/Array/Date
+>
+> c. 栈：存储简单数据类型，在栈内开辟一个空间存放值
+>
+> D. 堆：存储复杂数据类型，在栈内存储地址（16进制，系统自动分配），在从这个地址指向堆内的数据
+
+```javascript
+function fn(name){
+   this.name = name; // 第二步将p代入name = '刘德华'
+}
+function f1(x){  // x=p，p的地址复制给x，则x修改p也跟着修改
+   console.log(x.name); // 第五步输出结果为'刘德华'
+   x.name = '张学友'; // 第六步 x重新赋值为'张学友'，此时p的值也随之更改
+   console.log(x.name); // 第七步输出结果为'张学友'
+}
+var p = new fn('刘德华');  // 第一步赋值p='刘德华'，new创建开启复杂数据类型
+console.log(p.name);  // 第三步输出'刘德华'
+f1(p); // 第四步调用f1函数，将p传给f1中的x
+console.log(p.name); // 第八步输出结果为'张学友'
+```
+
+
