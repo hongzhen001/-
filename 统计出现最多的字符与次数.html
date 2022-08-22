@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function str(str){
+            let obj = {};
+            for(var i = 0; i < str.length; i++){
+                // var chars = str.charAt(i);
+                if(obj[str.charAt(i)]){
+                    obj[str.charAt(i)]++; // 如果obj中已有该元素，则值+1
+                } else {
+                    obj[str.charAt(i)] = 1; // 如果obj中没有改元素则存入值为1
+                }
+            }
+            let max = 0;
+            let ch = '';
+            for (k in obj){
+                // 遍历对象；k为属性名，obj[k]为属性值
+                if(obj[k] > max){
+                    max = obj[k];
+                    ch = k;
+                }
+            }
+            console.log(max);
+            console.log(ch);
+        }
+        str('abcoefoxyozzopp');
+        
+    </script>
+</body>
+</html>
