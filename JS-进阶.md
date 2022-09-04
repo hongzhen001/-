@@ -373,20 +373,20 @@ div.removeAttribute('index'); // 移除index属性
 <div class="tab">
   <div class="tab_list"> // tab栏
     <ul>
-    	<li class="current">商品介绍</li>
-			<li>规格与包装</li>
-			<li>售后保障</li>
-			<li>商品评价（50000）</li>
-			<li>手机社区</li>
-		</ul>
-	</div>
-	<div class="tab_con"> // 详情页
+      <li class="current">商品介绍</li>
+      <li>规格与包装</li>
+      <li>售后保障</li>
+      <li>商品评价（50000）</li>
+      <li>手机社区</li>
+    </ul>
+  </div>
+  <div class="tab_con"> // 详情页
     <div class="item" style="display: block;">商品介绍模块内容</div>
-		<div class="item">规格与包装模块内容</div>
-		<div class="item">售后保障模块内容</div>
-		<div class="item">商品评价（50000）模块内容</div>
-		<div class="item">手机社区模块内容</div>
-	</div>
+    <div class="item">规格与包装模块内容</div>
+    <div class="item">售后保障模块内容</div>
+    <div class="item">商品评价（50000）模块内容</div>
+    <div class="item">手机社区模块内容</div>
+  </div>
 </div>
 
 // 获取元素
@@ -449,9 +449,8 @@ div.dataset['lisName']
 >
 > b. 获取元素的方式分为两种：
 >
->  	1. 利用DOM提供的方式获取（如：getElementByID；querySeletor等），这种获取方式较为繁琐/逻辑性不强
->
->  	2. 利用父子兄弟节点层级关系获取，逻辑性更强，兼容性较差
+> 1. 利用DOM提供的方式获取（如：getElementByID；querySeletor等），这种获取方式较为繁琐/逻辑性不强
+> 2. 利用父子兄弟节点层级关系获取，逻辑性更强，兼容性较差
 >
 > c. 页面中所内容都是节点（标签，属性，文本等）
 >
@@ -463,7 +462,217 @@ div.dataset['lisName']
 >
 > e. 节点操作主要操作的是元素节点
 
-```javascript
+##### 1. 父子节点
 
+```javascript
+a. 父节点，使用 node.parentNode // 得到的是离元素最近的父节点（亲爸爸），若找不到父节点则返回null；
+<div>
+  <span></span>
+</div>
+var span = document.querySelector('span');
+span.parentNode; // 输出为父节点div
+
+b. 子节点，使用 parentNode.childNodes（不常用） / parentNode.children（常用）
+<ul>
+  <li></li>
+</ul>
+var ul = document.querySelector('ul');
+ul.childNodes; // 输出为ul中的li，输出内容包含元素节点，文本节点等（换行=文本节点）
+ul.children; // 输出为ul中li，只返回元素节点，文本/属性节点部返回
+
+c. 第一个元素与最后一个元素
+<ul>
+  <li></li>
+  <li></li>
+</ul>
+var ul = document.querySelector('ul');
+
+1. 第一个子节点：firstChild
+ul.firstchild; // 获取ul中的第一个子节点，为：text（换行）
+2. 最后一个子节点：lastChild
+ul.lastchild; // 获取ul中的最后一个子节点，为：text（换行）
+3. 第一个子元素:firstElementChild
+ul.firstElementChild; // 获取ul中第一个元素节点li
+4. 最后一个子元素:lastElementChild
+ul.lastElementChild; // 获取ul中最后一个元素节点li
+
+⚠️ 实际开发的书写形式
+ul.children[0]; // 获取ul中第一个元素节点li
+ul.children[ul.children.length - 1]; // 获取ul中最后一个元素节点li(最后一个子元素为子级个数-1，所以先获取子元素的个数)
+
+❤️案例：新浪下拉框，鼠标经过显示（结构ul嵌套li（导航栏）再嵌套a（导航栏的文字）与ul（下拉框）
+// 1. 获取元素
+var nav = document.querySelector('.nav');
+var lis = nav.children; // 得到4个小li
+// 2.循环注册事件
+for (var i = 0; i < lis.length; i++) {
+  lis[i].onmouseover = function() {
+    this.children[1].style.display = 'block';
+  }
+  lis[i].onmouseout = function() {
+    this.children[1].style.display = 'none';
+  }
+}
 ```
+
+##### 2. 兄弟节点
+
+```javascript
+<div></div>
+<span></span>
+var div = document.querySelector('div');
+
+a. 使用 node.nextSibling // 得到的是下一个兄弟节点（包含元素节点，文本节点等），若无则返回null
+div.nextSibling; // 输出为text（换行）
+
+b. 使用 node.previousSibling // 得到的是上一个兄弟节点（包含元素节点，文本节点等），若无则返回null
+div.previousSibling; // 输出为text（换行）
+
+c. 使用 node.nextElementSibling
+div.nextElementSiling; // 得到的是下一个兄弟元素节点，若无返回null
+
+d. 使用 node.previousElementSibling
+div.previousElementSiling; // 得到的是上一个兄弟元素节点，若无返回null
+
+⚠️ c/d存在兼容性问题，老版本浏览器需封装函数
+function getNextElementSibling(element){
+  var el = element;
+  while(el = el.nextElementSibling){
+    if(el.nodeType === 1){
+      return el;
+    }
+  }
+  return null;
+}
+```
+
+##### 3. 创建/添加节点
+
+```javascript
+a. 创建节点：通过tagName指定HTML元素，这些元素原本是不存在的，通过需求动态生成，也称为动态创建元素节点
+使用 document.createElement('tagName') 创建节点
+b. 添加节点：将一个节点添加至指定父节点的子节点列表末尾（类似于css中的after伪元素）
+使用 node.appendChild(child) 在子节点末尾添加节点 // 这里添加元素不需要加引号
+使用 node.insertBefore(child,指定元素) 在子节点指定位置添加新节点
+
+<ul>
+  <li></li>  
+</ul>
+var lis = document.createElement('li'); // 创建li元素节点
+var uls = document.querySelector('ul');
+uls.appendChild(lis); // 给ul中第一个li后面添加一个新的li元素节点
+uls.insertBefore(lis,uls.children[0]); // 给ul中的第一个li前面添加一个新的li元素节点
+uls.insertBefore(lis,uls.children[2]); // 在ul中的子元素第二个li前面添加li（这里数字代表索引号）
+
+❤️案例：评论发布
+<textarea name="" id="" cols="30" rows="10"></textarea>
+<input type="button" value="发布">
+<ul></ul>
+<script>
+  var text = document.querySelector('textarea');
+	var btn = document.querySelector('input');
+	var ul = document.querySelector('ul');
+	btn.onclick = function (){
+    if(text.value == ''){
+      alert('请输入内容');
+      return false;  // 如果输入为空则弹窗提示，直接输出false
+    }else {
+      var lis = document.createElement('li');
+      lis.innerHTML = text.value;
+      ul.insertBefore(lis,ul.children[0]); // 最新提交的永远放在第一个位置
+      text.value = ''; // 提交后文本框清空
+    }
+  }
+</script>
+```
+
+##### 4. 删除节点
+
+```javascript
+使用 node.removeChild(child) 删除父节点中某一个子节点
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+var ul = document.querySelector('ul');
+ul.removeChild(ul.children[1]); // 删除ul中第二个子节点
+
+❤️案例：删除留言
+var text = document.querySelector('textarea');
+var btn = document.querySelector('input');
+var ul = document.querySelector('ul');
+btn.onclick = function (){
+  if(text.value == ''){
+    alert('请输入内容');
+    return false;  // 如果输入为空则弹窗提示，直接输出false
+  }else {
+    var lis = document.createElement('li');
+    lis.innerHTML = text.value + "<a href='javascript:;'>删除</a>"; // 添加li内容的同时添加一个a进行删除操作，这里可以使用javasrcipt:;阻止超链接跳转
+    ul.insertBefore(lis,ul.children[0]); // 最新提交的永远放在第一个位置
+    text.value = ''; // 提交后文本框清空
+  }
+  var del = document.querySelectorAll('a'); // 获取所有的a元素
+  for (var i =0;i<del.length;i++){ // 添加点击事件
+    del[i].onclick =function(){
+      ul.removeChild(this.parentNode); // 删除当前a所在的父级li元素
+    }
+  }
+}
+```
+
+##### 5. 复制节点
+
+```javascript
+使用 node.cloneNode() 复制一个节点，若括号内为空或false，则为浅拷贝，只拷贝标签，不克隆里面的内容。若括号内为true，则为深拷贝，拷贝标签与内容
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+var ul = document.querySelector('ul');
+var li = ul.children[0].cloneNode(); // 复制第一个li标签
+ul.appendChild(li); // 添加复制的li到最后一个
+
+❤️案例：通过js设置对象数组，自动生成表格
+// 1.先去准备好学生的数据
+var datas = [{
+  name: '魏璎珞',
+  subject: 'JavaScript',
+  score: 100
+}, {
+  name: '弘历',
+  subject: 'JavaScript',
+  score: 98
+}];
+// 2. 往tbody 里面创建行： 有几个人（通过数组的长度）我们就创建几行
+var tbody = document.querySelector('tbody');
+for (var i = 0; i < datas.length; i++) { // 外面的for循环管行 tr
+  // 1. 创建 tr行
+  var tr = document.createElement('tr');
+  tbody.appendChild(tr);
+  // 2. 行里面创建单元格(跟数据有关系的3个单元格) td 单元格的数量取决于每个对象里面的属性个数  for循环遍历对象 datas[i]
+  for (var k in datas[i]) { // 里面的for循环管列 td
+    // 创建单元格 
+    var td = document.createElement('td');
+    // 把对象里面的属性值 datas[i][k] 给 td 
+    td.innerHTML = datas[i][k];
+    tr.appendChild(td);
+  }
+  // 3. 创建有删除2个字的单元格 
+  var td = document.createElement('td');
+  td.innerHTML = '<a href="javascript:;">删除 </a>';
+  tr.appendChild(td);
+}
+// 4. 删除操作
+var as = document.querySelectorAll('a');
+for (var i = 0; i < as.length; i++) {
+  as[i].onclick = function() {
+    // 点击a 删除 当前a 所在的行(链接的爸爸的爸爸) ，a的父级为单元格td，单元格的父级为行tr
+    tbody.removeChild(this.parentNode.parentNode);
+  }
+}
+```
+
+
 
