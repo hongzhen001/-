@@ -34,7 +34,7 @@
 <script>
   var timer = document.getElementById('time'); // 这里参数需为字符串，否则返回null，这里返回的是一个对象
   console.dir(timer);  // 打印返回的元素对象，可以更好的查看里面的属性与方法
-</script>
+</script>  
 // 先写标签，后写js，这里的js写在body中
 
 2. 根据标签名获取，使用getElementsByTagName('标签名'),返回的是对象的集合
@@ -97,75 +97,75 @@ btn.onclick = function(){  // btn.onclick 点击按钮（事件类型）
 |  onmouseup  |   鼠标弹起触发   |
 | onmousedown |   鼠标按下触发   |
 
-#### 5. 改变元素内容/属性
+### 3. 改变文本内容/元素属性
 
-1. 改变元素内容
+#### 1. 改变文本内容
 
-   ```javascript
-   a. element.innerText，不识别HTML标签，获取元素内容时会去除空格和换行
-   b. element.innerHTML，可识别HTML标签，获取元素内容时不会去除空格和换行
-   
-   // 点击按钮，div内文字发生变化
-   <button></button>
-   <div></div>
-   var btn = doucment.querySelector('button'); // 获取按钮元素
-   var div = doucment.querySelectoe('div'); // 获取div元素
-   btn.onclick = function(){
-     div.element.innerText = '需要显示文字内容'
-   }
-   
-   // 不添加事件，直接显示
-   var div = doucment.querySelectoe('div'); // 获取div元素
-   div.element.innerText = '需要显示文字内容'
-   
-   // Text与HTML的区别
-   var div = doucment.querySelectoe('div');
-   div.innerText = '<strong>IU</strong>' // 不识别加粗标签
-   div.innerHTML = '<strong>IU</strong>' // 可识别加粗标签
-   ```
+```javascript
+a. element.innerText，不识别HTML标签，获取元素内容时会去除空格和换行
+b. element.innerHTML，可识别HTML标签，获取元素内容时不会去除空格和换行
 
-2. 改变元素属性
+// 点击按钮，div内文字发生变化
+<button></button>
+<div></div>
+var btn = doucment.querySelector('button'); // 获取按钮元素
+var div = doucment.querySelectoe('div'); // 获取div元素
+btn.onclick = function(){
+  div.innerText = '需要显示文字内容'
+}
 
-   ```javascript
-   <button id="1">1</button>
-   <button id="2">2</button>
-   <img src="xx图片路径" alt="" title="1">
-   
-   // 通过按钮改变图片
-   var btn1 = doucment.getElementById('1');
-   var btn2 = doucment.getElementById('2');
-   var img = doucment.querySelector('img');
-   btn2.onclick = function(){
-     img.src = "xx图片2路径";
-     img.title = "2";
-   }
-   btn1.onclick = function(){
-     img.src = "xx图片1路径";
-     img.title = "1";
-   }
-   
-   ❤️案例：通过当前时间显示不同图片内容
-    <img src="./images/s.gif" alt="">
-    <div>上午好</div>
-    <script>
-      var img = document.querySelector('img');
-      var div = document.querySelector('div');
-      var date = new Date();
-      var h = date.getHours();  // 获取当前小时数
-      if (h < 12){
-        img.src = './imamges/s.gif';
-   	    div.innerHTML = '上午好';
-      } else if(h <18){
-   	    img.src = './images/x.gif';
-   	    div.innerHTML = '下午好';
-      } else {
-   	    img.src = './images/w.gif';
-   	    div.innerHTML = '晚上好';
-      }
-   </script>
-   ```
+// 不添加事件，直接显示
+var div = doucment.querySelectoe('div'); // 获取div元素
+div.innerText = '需要显示文字内容'
 
-#### 6. 改变表单属性
+// Text与HTML的区别
+var div = doucment.querySelectoe('div');
+div.innerText = '<strong>IU</strong>' // 不识别加粗标签
+div.innerHTML = '<strong>IU</strong>' // 可识别加粗标签
+```
+
+#### 2. 改变元素属性
+
+```javascript
+<button id="1">1</button>
+<button id="2">2</button>
+<img src="xx图片路径" alt="" title="1">
+
+// 通过按钮改变图片
+var btn1 = doucment.getElementById('1');
+var btn2 = doucment.getElementById('2');
+var img = doucment.querySelector('img');
+btn2.onclick = function(){
+  img.src = "xx图片2路径";
+  img.title = "2";
+}
+btn1.onclick = function(){
+  img.src = "xx图片1路径";
+  img.title = "1";
+}
+
+❤️案例：通过当前时间显示不同图片内容
+<img src="./images/s.gif" alt="">
+<div>上午好</div>
+<script>
+  var img = document.querySelector('img');
+  var div = document.querySelector('div');
+  var date = new Date();
+  var h = date.getHours();  // 获取当前小时数
+  if (h < 12){
+    img.src = './imamges/s.gif';
+	  div.innerHTML = '上午好';
+  } else if(h <18){
+	  img.src = './images/x.gif';
+	  div.innerHTML = '下午好';
+  } else {
+	  img.src = './images/w.gif';
+	  div.innerHTML = '晚上好';
+  }
+</script>
+```
+
+### 4. 改变表单属性
 
 ```javascript
 // 点击按钮，修改文本框中的内容
@@ -186,10 +186,10 @@ var img = document.querySelector('img');
 var flag = 0; // 设置一个flag变量，0的时候为密码隐藏，1的时候为密码显示，以此可以无限显示隐藏功能
 img.onclick = function(){
   if (flag == 0){
-		password.type = 'text';
-		img.src = './images/open.png';
-		flag = 1; // 点击后flag修改为1
-	} else {
+	  password.type = 'text';
+	  img.src = './images/open.png';
+	  flag = 1; // 点击后flag修改为1
+  } else {
     password.type = 'password';
     img.src = './images/close.png';
     flag = 0; // 再次点击后flag修改为0，无限循环操作
@@ -197,7 +197,7 @@ img.onclick = function(){
 }
 ```
 
-#### 7. 改变CSS样式属性
+### 5. 改变CSS样式属性
 
 ```javascript
 element.style // 行内样式操作，js写的样式会加入到行内样式中，权重高优先显示（修改样式较少的情况下使用）
@@ -207,14 +207,14 @@ element.className // 类名样式操作 （修改样式较多时使用）
 <div></div>
 var div = document.querySelector('div');
 div.onclick = function(){
-	this.style.backgroundColor = 'purple'; // 修改div中的背景颜色，这里样式名不用-
+  this.style.backgroundColor = 'purple'; // 修改div中的背景颜色，这里样式名不用-
 }
 
 // 利用className修改样式
 1. 先在style中书写改变后的样式（新起一个类名）
 2. 再在js中使用
-	this.className = '上面新起的类名' // 这里直接写类名即可，不需要加符号
-	this.className = '原先的类名 新起的类名' // 这样书写可保留原先的类名在加上新起的类名
+  this.className = '上面新起的类名' // 这里直接写类名即可，不需要加符号
+  this.className = '原先的类名 新起的类名' // 这样书写可保留原先的类名在加上新起的类名
 
 ❤️案例：隐藏某一元素
 var div = document.querySelector('.box');
@@ -248,15 +248,15 @@ texts.onblur = function(){
 
 ❤️案例：密码条件
 <div class="box">
-	<input type="password" style="outline: none;">
-	<img src="./images/mess.png" alt="">
-	<span>请输入6~16位密码</span>
+  <input type="password" style="outline: none;">
+  <img src="./images/mess.png" alt="">
+  <span>请输入6~16位密码</span>
 </div>
 <script>
-	var password = document.querySelector('input');
-	var img = document.querySelector('img');
-	var text = document.querySelector('span')
-	password.onblur = function () {
+  var password = document.querySelector('input');
+  var img = document.querySelector('img');
+  var text = document.querySelector('span')
+  password.onblur = function () {
     if(password.value.length < 6 || password.value.length >16){
       img.src = './images/wrong.png';
       text.innerHTML = '密码不符合标准';
@@ -268,7 +268,7 @@ texts.onblur = function(){
   }
 ```
 
-#### 8. 排他思想（算法）
+### 6. 排他思想（算法）
 
 ```javascript
 // 多个按钮点击效果相同，可利用for循环，不需要一个个添加事件
@@ -289,10 +289,10 @@ for(var i = 0; i < btn.length; i++){
 
 ❤️案例：点击图片更换网页背景
 <ul class="baidu">
-	<li><img src="images/1.jpg"></li>
-	<li><img src="images/2.jpg"></li>
-	<li><img src="images/3.jpg"></li>
-	<li><img src="images/4.jpg"></li>
+  <li><img src="images/1.jpg"></li>
+  <li><img src="images/2.jpg"></li>
+  <li><img src="images/3.jpg"></li>
+  <li><img src="images/4.jpg"></li>
 </ul>
 <script>
 	var imgs = document.querySelector('.baidu').querySelectorAll('img'); // 获取baidu中所有的img
@@ -309,26 +309,28 @@ var j_tbs = document.querySelector('tbody').getElementsByTagName('input'); // �
 // 全选复选框选中小复选框都跟着全部选中
 j_cbAll.onclick = function(){
 	// this.checked; // 这个可得到复选框是否选中，选中为ture，未选中为fasle
-	for (var i = 0; i < j_tbs.length; i++){
-		j_tbs[i].checked = this.checked;
-	}
+  for (var i = 0; i < j_tbs.length; i++){
+	  j_tbs[i].checked = this.checked;
+  }
 }
 // 小复选框全部选中，全选复选框跟着选中
 for (var i = 0; i < j_tbs.length; i++){ // 循环小复选框点击事件
-	j_tbs[i].onclick = function(){
-		var flag = true; // 设置一个变量检测小复选框是否都选中
-		for(var j =0;j<j_tbs.length;j++){ // 循环检测小复选框
-			if(!j_tbs[j].checked){  // 如果有一个小复选框未选中，则flag为fasle，全选复选框则不会选中（这里使用反选，!j_tbs[i].checked)
-				flag = false;
+  j_tbs[i].onclick = function(){
+    var flag = true; // 设置一个变量检测小复选框是否都选中
+    for(var j =0;j<j_tbs.length;j++){ // 循环检测小复选框
+      if(!j_tbs[j].checked){  // 如果有一个小复选框未选中，则flag为fasle，全选复选框则不会选中（这里使用反选，!j_tbs[i].checked)
+        flag = false;
         break; // 退出for循环，可提高执行效率，只要有一个小复选框未选中则退出循环
-			}
-		}
+      }
+    }
     j_cbAll.checked = flag;
-	}  
+  }  
 }
 ```
 
-#### 9. 获取属性的值
+### 7. 获取/修改/删除属性内容
+
+#### 1. 获取属性的值
 
 ```javascript
 <div id="IU" index="1"></div>
@@ -341,7 +343,7 @@ b. 通过element.getAttribute('属性')，获取自定义属性值，如index（
 console.lig(div.getAttribute('id')); // 输出id属性 IU
 ```
 
-#### 10. 设置属性的值
+#### 2. 设置属性的值
 
 ```javascript
 <div id="IU" index="1" class='IU'></div>
@@ -356,7 +358,7 @@ div.setAttribute('index','2'); // 修改index为2
 div.setAttribute('class','hz'); // 修改class为hz，这里需要书写为class（与上面的不同，比较特殊）
 ```
 
-#### 11. 移除属性
+#### 3. 移除属性
 
 ```javascript
 <div id="IU" index="1" class='IU'></div>
@@ -417,7 +419,7 @@ for (var i = 0; i < lis.length; i++) {
 }
 ```
 
-#### 12. H5自定义属性
+### 8. H5自定义属性
 
 ```javascript
 // H5新增的获取属性只能提取 “data-” 开头的自定义属性
@@ -443,7 +445,7 @@ div.dataset['index']
 div.dataset['lisName'] 
 ```
 
-#### 13. 节点操作
+### 9. 节点操作
 
 > a. 节点操作是获取元素的方式
 >
@@ -570,9 +572,9 @@ uls.insertBefore(lis,uls.children[2]); // 在ul中的子元素第二个li前面�
 <ul></ul>
 <script>
   var text = document.querySelector('textarea');
-	var btn = document.querySelector('input');
-	var ul = document.querySelector('ul');
-	btn.onclick = function (){
+  var btn = document.querySelector('input');
+  var ul = document.querySelector('ul');
+  btn.onclick = function (){
     if(text.value == ''){
       alert('请输入内容');
       return false;  // 如果输入为空则弹窗提示，直接输出false
@@ -637,13 +639,13 @@ ul.appendChild(li); // 添加复制的li到最后一个
 ❤️案例：通过js设置对象数组，自动生成表格
 // 1.先去准备好学生的数据
 var datas = [{
-  name: '魏璎珞',
-  subject: 'JavaScript',
-  score: 100
+    name: '魏璎珞',
+    subject: 'JavaScript',
+    score: 100
 }, {
-  name: '弘历',
-  subject: 'JavaScript',
-  score: 98
+    name: '弘历',
+    subject: 'JavaScript',
+    score: 98
 }];
 // 2. 往tbody 里面创建行： 有几个人（通过数组的长度）我们就创建几行
 var tbody = document.querySelector('tbody');
@@ -674,5 +676,137 @@ for (var i = 0; i < as.length; i++) {
 }
 ```
 
+##### 6. 创建元素
 
+```javascript
+<div><div>
+var div = document.querySelector('div');
+
+a. 使用 document.write()；会导致页面重绘（原页面内容全部消除，只存在这个创建的元素内容）
+document.write('<div></div>')
+
+b. 使用 element.innerHTML；若采取拼接字符串的形式效率较低，使用数组形式效率最高
+拼接字符串形式：div.innerHTML = '<a href="javasrcipt:;"></a>'
+数组形式：
+var arr =[];
+for(var i =0;i <=100,i++){
+  arr.push('<a href="javasrcipt:;"></a>')
+}
+div.innerHTML = arr.join('');
+
+c. 使用 document.createElement()，效率比innerHTML拼接字符串形式高，比innerHTML数组形式低
+var a = document.createElement('a');
+div.appendChild(a);
+```
+
+### 10. DOM重点核心
+
+> 1. 创建元素/节点：document.write();innerHTML;createElememt
+>
+> 2. 增加元素/节点：appendChild;insertBefore
+>
+> 3. 删除元素/节点：removeChild
+>
+> 4. 修改元素/节点：
+>    1. 修改元素属性：元素.src/href/title
+>    2. 修改元素内容：innerHTML/innerText
+>    3. 修改表单元素：元素.value/type/disabled(禁用按钮，值为true)
+>    4. 修改元素样式：元素.style.需要修改的样式属性='修改样式的值'； 元素.className = '修改的样式类名'
+> 5. 查询元素/节点：
+>    1. API提供的方法：getElementById;getElementsByTagName;
+>    2. H5新增的方法：querySelector;querySelectorAll
+>    3. 利用节点获取：父（parentNode）;子（children）;兄（previousElementSibling\nextElementSibling）
+> 6. 属性操作：（针对自定义属性，自定义属性都用data-开头）
+>    1. setAttribute 设置属性值（这里获取类名直接写class，不需要写className）
+>    2. getAttribute/dataset（H5专用） 获取属性值
+>    3. removeAttribute 删除属性值
+> 7. 事件操作：鼠标事件
+
+### 11. 事件高级
+
+#### 1. 注册事件
+
+> 1. 给元素添加事件称为注册事件，也称作绑定事件
+> 2. 注册事件有两种方式：传统方式与方法监听注册方式
+>    1. 传统注册：利用on开头的事件（如onclick），特点是唯一性，同一个元素同一个事件只能设置一个处理函数，最后注册的会覆盖前面注册的
+>    2. 方法监听注册：使用addEventListener();IE9不支持此方法，同一个元素同一个事件可以注册多个侦听器，按注册依次执行
+>    3. 方法监听注册：IE9之前使用attachEvent；（基本不使用）
+
+##### addEventListener事件监听方式
+
+```javascript
+a. eventTarget.addEventListener(type,listener[,useCaptrue])
+// 将指定的监听器注册到eventTarget（目标对象），当该对象触发指定事件时，则会执行事件处理函数
+type：事件类型字符串，如click，mouseover（这里不要带on）
+listener：事件处理函数
+useCapture：可选参数，是一个布尔值，默认为false
+
+<button></button>
+var btn = document.querySelector('button');
+btn.addEventListener('click(点击)',function(){ // 这里点击不要加on
+  alert('IU')
+})
+
+b. eventTarget.attachEvent(eventNameWithOn,callback)
+eventNameWithOn：事件类型字符串，如onclick，onmouseover（这里需要加on）
+callback：事件处理函数
+
+<button></button>
+var btn = document.querySelector('button');
+btn.attachEvent('onclick',function(){ // 这里点击不要加on
+  alert('IU')
+})
+```
+
+#### 2. 删除事件
+
+```javascript
+<div></div>
+var div =document.querySelector('div');
+
+a. 传统方式删除事件：eventTarget.onclick=null;
+div.onclick = function(){
+  alert('IU');
+  div.onclick=null; // 点击一次弹框后无法再次点击
+}
+
+b. 方法监听删除事件：eventTarget.removeEventListener(type,listener[,useCaptrue]) // 此类删除事件需将函数分开写
+div.addEventListener('click',fn) // 这里直接写函数名，这里不需要调用加小括号
+function fn(){ // 另外注册函数
+  alert('IU')；
+  div.removeEventListener('click',fn)
+}
+
+c. IE9以下版本的方法监听删除：eventTarget.datachEvent(eventNameWithOn,callback)
+div.attachEvent('onclick',fn)
+function fn(){
+  alert('IU');
+  div.datachEvent('onclick',fn)
+}
+```
+
+#### 3. DOM事件流
+
+> 1. 事件流描述是从页面中接受事件的顺序
+> 2. 事件发生时会在元素节点之间按照特定的顺序传播，此过程称为DOM事件流
+> 3. 给一个div注册点击事件：从Document-HTML-body-div-body-HTML-Document；
+> 4. DOM事件流分为三个阶段：捕获阶段（从document-div）/当前目标阶段（div）/冒泡阶段（从div-document）
+> 5. js只能执行捕获或冒泡其中一个阶段
+> 6. onclick和attachEvent只能得到冒泡阶段
+> 7. addEventListener(type,listener[,useCaptrue])中第三个参数，如果是true则为捕获阶段调用事件处理程序，如果为false则为冒泡阶段调用事件处理程序
+> 8. 有些事件没有冒泡，如：onblur/onfocus/onmouseenter/onmouseleave
+> 9. 实际开发中常使用冒泡，很少使用捕获
+
+#### 4. 事件对象
+
+```javascript
+<div></div>
+var div = querySelector('div');
+div.onlick = function(event){} 
+1. 这里的event就是一个事件对象，写在侦听函数的小括号内，当形参来看
+2. 事件对象有了事件才会存在，是系统自动创建的，不需要认为传递参数
+3. 事件对象是事件的一系列相关数据的集合，跟事件相关，比如鼠标事件就有鼠标相关信息（如鼠标坐标等），如果是键盘事件就有键盘信息（如按下了哪个键）
+4. 事件对象名可自定义 e / evt / event
+5. 存在兼容性问题，IE9以下通过 window.event(固定写法)，兼容性写法 e = e || window.event（设一个变量等于两个）
+```
 
