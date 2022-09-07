@@ -810,3 +810,134 @@ div.onlick = function(event){}
 5. 存在兼容性问题，IE9以下通过 window.event(固定写法)，兼容性写法 e = e || window.event（设一个变量等于两个）
 ```
 
+##### 1. 常见的属性和方法
+
+| 事件对象属性方法    | 说明                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| e.target            | 返回触发事件的对象（标准）[与this不同，this返回的是绑定事件对象] |
+| e.srcElement        | 返回触发事件的对象（非标准，IE9以下使用），了解即可          |
+| e.type              | 返回事件的类型（如：click，mouseover 不带on）                |
+| e.cancelBubble      | 该属性阻止冒泡（非标准，IE9以下使用）                        |
+| e.returnValue       | 该属性阻止默认事件（默认行为）非标准，IE9以下使用，比如不让链接跳转，按钮不提交等，了解即可 |
+| e.preventDefault()  | 该属性阻止默认事件（默认行为）标准，比如不让链接跳转，按钮不提交等 |
+| e.stopPropagation() | 阻止冒泡（标准）                                             |
+
+##### 2. 阻止默认事件/返回事件对象
+
+```javascript
+<div></div>
+var div = document.querySelector('div');
+div.addEventListener('click',function(e){
+  console.log(e.target); // 返回div元素
+  console.log(e.typr); // 返回click（不带on）
+})
+
+<ul>
+  <li></li>  
+</ul>
+var ul = document.querySelector('ul');
+ul.addEventListener('click',function(){
+  console.log(e.target); // 点击li则返回li元素，点击ul则返回ul元素
+  console.log(this); // 点击li返回整个ul元素
+  console.log(e.currentTarget); // 点击li返回整个ul元素，与this相同
+})
+
+<a href="http://www.baidu.com"></a>
+var a = document.querySelector('a');
+a.addEventListener('click',function(evt){
+  evt.preventDefault(); // 阻止a链接跳转
+  return false; // 也能阻止跳转，但后面的代码无法执行，而且只限于传统注册方式，addEventListener不识别
+})
+```
+
+##### 2. 阻止冒泡
+
+```javascript
+// 未阻止前点击son，son与father的弹窗都会出现
+<div class="father">
+  <div class="son"></div>
+</div>
+var father = document.querySelector('.father');
+var son = father.children[0];
+son.addEventListener('click',function(e){
+  alert('1');
+  e.stopPropagation(); // 阻止冒泡后点击son，只会弹框son的内容，father不会弹框
+  e.cancelBubble = ture; // IE9以下使用这个阻止冒泡（了解即可）
+});
+father.addEventListener('click',function(){
+  alert('2')
+})
+```
+
+#### 5. 事件委托（代理/委派）
+
+> 事件委托的原理：不是每个子节点单独设置事件监听器，而是在父节点上设置事件监听器，然后利用冒泡原理影响设置每个子节点
+>
+> 事件委托的作用：只操作一次DOM，提高了程序的性能
+
+```javascript
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+var ul = document.querySelector('ul');
+ul.addEventListener('click',function(e){
+  alert('IU'); // 点击任意一个li都会有弹框，省去循环操作
+  e.target.style.backgoundClor = 'pink'; // 点击哪个li，哪个li背景颜色变成pink
+}) 
+```
+
+#### 6. 禁止鼠标右键/禁止鼠标选中
+
+```javascript
+<div></div>
+var div = document.querySelector('div');
+
+a. 禁止鼠标右键菜单：使用 contextmenu
+div.addEventListener('contextmenu',function(e){
+  e.preventDefault();
+})
+
+b. 禁止鼠标选中：使用 selectstart
+div.addEventListener('selectstart',function(e){
+  e.preventDefault();
+})
+```
+
+#### 7. 鼠标事件对象
+
+| 鼠标事件对象 | 说明                                         |
+| ------------ | -------------------------------------------- |
+| e.clientX    | 返回鼠标相对于浏览器窗口可视区的X坐标        |
+| e.clientY    | 返回鼠标相对于浏览器窗口可视区的Y坐标        |
+| e.pageX      | 返回鼠标相对于文档页面的X坐标（IE9以上支持） |
+| e.pageY      | 返回鼠标相对于文档页面的Y坐标（IE9以上支持） |
+| e.screenX    | 返回鼠标相对于电脑屏幕的X坐标                |
+| e.screenY    | 返回鼠标相对于电脑屏幕的Y坐标                |
+
+❤️案例
+
+```javascript
+根据鼠标移动，图片跟着移动
+<img src="xx图片位置" style="position:absolute"> // 图片跟着移动，需添加绝对定位
+var img = document.querySelector('img');
+document.addEventListener('mousemove',function(e){ // 鼠标移动事件
+  var x = e.pageX // 获取鼠标移动的x轴
+  var y = e.pageY // 获取鼠标移动的y轴
+  img.style.left = x + 'px'; // 绝对定位位移的距离，这里单位不能漏
+  img.style.top = y + 'px'
+})
+```
+
+#### 8. 键盘事件
+
+##### 1. 常见的键盘事件
+
+| 键盘事件   | 触发条件                                                     |
+| ---------- | ------------------------------------------------------------ |
+| onkeyup    | 某个键盘按键被松开时触发                                     |
+| onkeydowm  | 某个键盘按键被按下时触发，down会比press更先执行              |
+| onkeypress | 某个键盘按键被按下时触发，但不识别功能键（如：ctrl/shift/箭头等） |
+
+##### 
